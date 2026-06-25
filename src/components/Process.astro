@@ -1,0 +1,67 @@
+---
+const steps = [
+	{
+		num: '1',
+		title: 'Define',
+		desc: 'We dig into the real problem, scope it tight, and agree on what success looks like.',
+	},
+	{
+		num: '2',
+		title: 'Design',
+		desc: 'Clear plan, clean structure — we map the build before a line of code is written.',
+	},
+	{
+		num: '3',
+		title: 'Build',
+		desc: 'Two senior devs heads-down, shipping in steady increments you can see.',
+	},
+	{
+		num: '4',
+		title: 'Ship',
+		desc: 'Tested, fast, and launched on your timeline — with support after go-live.',
+	},
+];
+---
+
+<section
+	id='process'
+	class='border-y border-hairline bg-white py-20 lg:py-28'
+>
+	<div class='container'>
+		<div class='mx-auto max-w-xl text-center'>
+			<p class='eyebrow mb-4 justify-center'>
+				<span class='inline-block h-2 w-2 bg-brand'></span>
+				How we work
+			</p>
+			<h2 class='display text-4xl text-ink sm:text-5xl'>A simple, honest process</h2>
+			<p class='mt-4 text-lg leading-relaxed text-ink-soft'>
+				No bloated agency runaround. Four clear steps from first hello to shipped.
+			</p>
+		</div>
+
+		<ol class='relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6'>
+			<!-- dashed connector line (desktop only) -->
+			<span
+				aria-hidden='true'
+				class='absolute left-[12%] right-[12%] top-7 hidden h-0.5 lg:block'
+				style='background:repeating-linear-gradient(90deg,#f0c9bf 0,#f0c9bf 7px,transparent 7px,transparent 14px)'
+			></span>
+
+			{
+				steps.map((step) => (
+					<li class='relative text-center'>
+						<div class='relative mx-auto flex h-14 w-14 items-center justify-center bg-brand shadow-lg shadow-brand/30'>
+							<span class='display text-2xl text-white'>{step.num}</span>
+							<span
+								aria-hidden='true'
+								class='absolute -right-1.5 -top-1.5 h-2 w-2 bg-orange'
+							/>
+						</div>
+						<h3 class='display mt-6 text-xl text-ink'>{step.title}</h3>
+						<p class='mx-auto mt-2 max-w-xs text-sm leading-relaxed text-ink-soft'>{step.desc}</p>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
