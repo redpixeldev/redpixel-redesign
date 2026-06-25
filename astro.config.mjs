@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import cloudflare from '@astrojs/cloudflare';
 
@@ -14,6 +14,32 @@ export default defineConfig({
       assets: 'assets',
       format: 'file',
 	},
+
+  // Self-hosted Google Fonts via the Astro Fonts API (replaces the runtime
+  // <link> tags). Families/weights/styles match the old Google Fonts request.
+  fonts: [
+      {
+          provider: fontProviders.google(),
+          name: 'Oswald',
+          cssVariable: '--font-oswald',
+          weights: [400, 500, 600, 700],
+          styles: ['normal'],
+      },
+      {
+          provider: fontProviders.google(),
+          name: 'Open Sans',
+          cssVariable: '--font-open-sans',
+          weights: [400, 600, 700],
+          styles: ['normal', 'italic'],
+      },
+      {
+          provider: fontProviders.google(),
+          name: 'Space Mono',
+          cssVariable: '--font-space-mono',
+          weights: [400, 700],
+          styles: ['normal'],
+      },
+	],
 
   vite: {
       build: {

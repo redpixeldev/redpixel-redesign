@@ -4,9 +4,9 @@
 
 @theme {
 	--font-*: initial;
-	--font-heading: 'Oswald', sans-serif;
-	--font-body: 'Open Sans', sans-serif;
-	--font-mono: 'Space Mono', monospace;
+	--font-heading: var(--font-oswald), sans-serif;
+	--font-body: var(--font-open-sans), sans-serif;
+	--font-mono: var(--font-space-mono), monospace;
 
 	/* Brand palette — pulled exactly from the Red Pixel logo + design */
 	--color-brand: #ee1b23; /* primary red — dominant accent */
