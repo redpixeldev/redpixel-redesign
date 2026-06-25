@@ -1,15 +1,18 @@
-/*
-Please create a `fonts` folder in the `public` folder then add the font files there.
-
-Example usage:
+/* Brand display font — Maxwell Small Caps Condensed (self-hosted; not on Google Fonts).
+   Body (Open Sans) + mono accent (Space Mono) are loaded from Google Fonts in Layout.astro. */
 
 @font-face {
-  font-family: "proxima_nova";
-  src: url("/fonts/proxima_nova_regular-webfont.woff2") format("woff2"),
-    url("proxima_nova_regular-webfont.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'Maxwell';
+	src: url('/fonts/maxwell-book.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
 	font-display: swap;
 }
 
-*/
+@font-face {
+	font-family: 'Maxwell';
+	src: url('/fonts/maxwell-heavy.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}

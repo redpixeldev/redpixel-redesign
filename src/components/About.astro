@@ -1,0 +1,70 @@
+---
+const stats = [
+	{ value: '10+', label: 'Years experience' },
+	{ value: '120+', label: 'Projects shipped' },
+	{ value: '2', label: 'Senior devs, no handoffs' },
+];
+---
+
+<section
+	id='about'
+	class='bg-white py-20 lg:py-28'
+>
+	<div class='container grid items-center gap-12 lg:grid-cols-2'>
+		<div class='relative'>
+			<div
+				aria-hidden='true'
+				class='absolute -left-4 -top-4 h-24 w-24 bg-brand/10'
+			>
+			</div>
+			<div
+				aria-hidden='true'
+				class='absolute -bottom-4 -right-4 grid grid-cols-4 gap-1'
+			>
+				{
+					Array.from({ length: 16 }).map((_, i) => (
+						<span class={`h-2 w-2 ${i % 3 === 0 ? 'bg-brand' : 'bg-orange/40'}`} />
+					))
+				}
+			</div>
+			<img
+				src='/img/sisters.png'
+				alt='Illustrated portrait of sisters Vivian and Daniela Guillen working together at a laptop'
+				width='1448'
+				height='1086'
+				loading='lazy'
+				class='relative w-full rounded-xl border border-hairline shadow-lg shadow-ink/5'
+			/>
+		</div>
+
+		<div>
+			<p class='eyebrow mb-5'>
+				<span class='inline-block h-2 w-2 bg-brand'></span>
+				About us
+			</p>
+			<h2 class='display text-4xl text-ink sm:text-5xl'>
+				We're <span class='text-brand'>Vivian &amp; Daniela</span>
+			</h2>
+			<p class='mt-6 text-lg leading-relaxed text-ink-soft'>
+				Two sisters, both professional web developers with a decade-plus of full-time freelance work behind us. We
+				define the need, deliver to your timeline, and communicate like we're in the next room — because reliable
+				beats flashy every single time.
+			</p>
+			<p class='mt-4 text-lg leading-relaxed text-ink-soft'>
+				Startups and agencies keep us on speed-dial because we move fast without dropping the ball. You get a senior
+				pair, not a handoff chain.
+			</p>
+
+			<dl class='mt-10 grid grid-cols-3 gap-6 border-t border-hairline pt-8'>
+				{
+					stats.map((stat) => (
+						<div>
+							<dt class='display text-4xl text-brand sm:text-5xl'>{stat.value}</dt>
+							<dd class='mt-1 text-sm text-gray'>{stat.label}</dd>
+						</div>
+					))
+				}
+			</dl>
+		</div>
+	</div>
+</section>

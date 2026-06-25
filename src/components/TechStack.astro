@@ -1,0 +1,36 @@
+---
+const stack = [
+	{ name: 'Tailwind CSS', color: '#38bdf8' },
+	{ name: 'Vue.js', color: '#42b883' },
+	{ name: 'Nuxt.js', color: '#00dc82' },
+	{ name: 'Alpine.js', color: '#77c1d2' },
+	{ name: 'React', color: '#61dafb' },
+	{ name: 'Laravel', color: '#ff2d20' },
+	{ name: 'Shopify', color: '#95bf47' },
+	{ name: 'WordPress', color: '#21759b' },
+	{ name: 'Statamic', color: '#ff269e' },
+];
+---
+
+<section class='border-y border-hairline bg-paper py-10'>
+	<div class='container'>
+		<p class='eyebrow mb-5'>
+			<span class='inline-block h-2 w-2 bg-brand'></span>
+			Our stack
+		</p>
+		<ul class='flex flex-wrap gap-3'>
+			{
+				stack.map((tech) => (
+					<li class='inline-flex items-center gap-2 rounded-full border border-hairline bg-white px-4 py-2 text-sm font-semibold text-ink-soft'>
+						<span
+							aria-hidden='true'
+							class='inline-block h-2.5 w-2.5 rounded-sm'
+							style={`background:${tech.color}`}
+						/>
+						{tech.name}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

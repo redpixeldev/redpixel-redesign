@@ -1,1 +1,133 @@
-<div class='bg-blue-100'>header</div>
+---
+const navLinks = [
+	{ label: 'Home', href: '#top' },
+	{ label: 'About', href: '#about' },
+	{ label: 'Services', href: '#services' },
+	{ label: 'Work', href: '#work' },
+	{ label: 'Products', href: '#products' },
+	{ label: 'Contact', href: '#contact' },
+];
+
+const email = 'vivian@redpixel.io';
+---
+
+<header
+	x-data='{ scrolled: false, open: false }'
+	x-init="scrolled = window.scrollY > 8; window.addEventListener('scroll', () => scrolled = window.scrollY > 8)"
+	:class="scrolled ? 'border-hairline/80 bg-white/85 shadow-sm backdrop-blur' : 'border-transparent bg-white/0'"
+	class='fixed inset-x-0 top-0 z-50 border-b transition-all duration-300'
+>
+	<nav
+		class='container flex items-center justify-between py-4'
+		aria-label='Primary'
+	>
+		<a
+			href='#top'
+			class='flex items-center'
+			aria-label='Red Pixel — home'
+		>
+			<img
+				src='/img/logo.png'
+				alt='Red Pixel'
+				width='160'
+				height='44'
+				class='h-9 w-auto'
+			/>
+		</a>
+
+		<ul class='hidden items-center gap-8 lg:flex'>
+			{
+				navLinks.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class='text-sm font-semibold text-ink-soft transition-colors hover:text-brand'
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class='hidden lg:block'>
+			<a
+				href={`mailto:${email}?subject=Project%20inquiry`}
+				class='btn-primary'
+			>
+				Start a project
+			</a>
+		</div>
+
+		<button
+			type='button'
+			class='inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden'
+			:aria-expanded='open'
+			aria-controls='mobile-menu'
+			@click='open = !open'
+		>
+			<span class='sr-only'>Toggle menu</span>
+			<svg
+				x-show='!open'
+				class='h-6 w-6'
+				fill='none'
+				stroke='currentColor'
+				stroke-width='2'
+				viewBox='0 0 24 24'
+				aria-hidden='true'
+			>
+				<path
+					stroke-linecap='round'
+					d='M4 7h16M4 12h16M4 17h16'></path>
+			</svg>
+			<svg
+				x-show='open'
+				x-cloak
+				class='h-6 w-6'
+				fill='none'
+				stroke='currentColor'
+				stroke-width='2'
+				viewBox='0 0 24 24'
+				aria-hidden='true'
+			>
+				<path
+					stroke-linecap='round'
+					d='M6 6l12 12M18 6L6 18'></path>
+			</svg>
+		</button>
+	</nav>
+
+	<!-- Mobile overlay menu -->
+	<div
+		id='mobile-menu'
+		x-show='open'
+		x-cloak
+		x-transition.opacity
+		@keydown.escape.window='open = false'
+		class='border-t border-hairline bg-white lg:hidden'
+	>
+		<ul class='container flex flex-col gap-1 py-4'>
+			{
+				navLinks.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							@click='open = false'
+							class='block rounded-lg px-2 py-3 text-base font-semibold text-ink hover:bg-paper hover:text-brand'
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+			<li class='pt-2'>
+				<a
+					href={`mailto:${email}?subject=Project%20inquiry`}
+					class='btn-primary w-full'
+				>
+					Start a project
+				</a>
+			</li>
+		</ul>
+	</div>
+</header>

@@ -1,1 +1,64 @@
-<div class='bg-green-100'>footer</div>
+---
+const navLinks = [
+	{ label: 'Home', href: '#top' },
+	{ label: 'About', href: '#about' },
+	{ label: 'Services', href: '#services' },
+	{ label: 'Work', href: '#work' },
+	{ label: 'Products', href: '#products' },
+	{ label: 'Contact', href: '#contact' },
+];
+
+const email = 'vivian@redpixel.io';
+const year = new Date().getFullYear();
+---
+
+<footer class='border-t border-hairline bg-paper'>
+	<div class='container py-14'>
+		<div class='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
+			<a
+				href='#top'
+				aria-label='Red Pixel — home'
+			>
+				<img
+					src='/img/logo.png'
+					alt='Red Pixel'
+					width='170'
+					height='46'
+					class='h-10 w-auto'
+				/>
+			</a>
+
+			<nav aria-label='Footer'>
+				<ul class='flex flex-wrap gap-x-7 gap-y-2'>
+					{
+						navLinks.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class='text-sm font-semibold text-ink-soft transition-colors hover:text-brand'
+								>
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<div class='flex flex-col gap-1 text-sm md:items-end'>
+				<a
+					href={`mailto:${email}`}
+					class='font-semibold text-ink transition-colors hover:text-brand'
+				>
+					{email}
+				</a>
+				<span class='text-gray'>@redpixeldev</span>
+			</div>
+		</div>
+
+		<div class='mt-10 flex flex-col gap-2 border-t border-hairline pt-6 text-sm text-gray sm:flex-row sm:items-center sm:justify-between'>
+			<p>&copy; {year} Red Pixel · Web Design &amp; Development</p>
+			<p>Built with Astro, Tailwind CSS &amp; Alpine.js.</p>
+		</div>
+	</div>
+</footer>

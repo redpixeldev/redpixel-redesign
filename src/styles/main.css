@@ -4,34 +4,73 @@
 
 @theme {
 	--font-*: initial;
-	--font-heading: sans-serif;
-	--font-body: sans-serif;
+	--font-heading: 'Maxwell', 'Oswald', sans-serif;
+	--font-body: 'Open Sans', sans-serif;
+	--font-mono: 'Space Mono', monospace;
 
-	--color-brand-primary: ;
-}
+	/* Brand palette — pulled exactly from the Red Pixel logo + design */
+	--color-brand: #ef4123; /* primary red — dominant accent */
+	--color-brand-bright: #ee1b23; /* hover / active */
+	--color-orange: #f7941e; /* secondary accent, used sparingly */
 
-@utility container {
-	margin-inline: auto;
-	padding-inline: 1rem;
+	--color-ink: #111111; /* headlines / body text */
+	--color-ink-soft: #4d4d4d; /* secondary text */
+	--color-gray: #808080; /* muted text */
+	--color-gray-light: #b3b3b3; /* disabled / faint */
+	--color-hairline: #d9d9d9; /* borders / dividers */
+	--color-paper: #f7f7f7; /* off-white section bg */
 }
 
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
+@utility container {
+	margin-inline: auto;
+	max-width: 75rem; /* 1200px content width */
+	padding-inline: 1.5rem;
+}
+
 @utility btn {
-	@apply transition-colors duration-300 ease-linear;
+	@apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wide transition-colors duration-200 ease-out;
 }
 
 @utility btn-primary {
-	@apply bg-brand-primary text-white;
+	@apply btn bg-brand text-white hover:bg-brand-bright;
+}
+
+@utility btn-outline {
+	@apply btn border border-hairline bg-white text-ink hover:border-ink;
+}
+
+/* Small mono eyebrow label with a pixel marker, used above each section heading */
+@utility eyebrow {
+	@apply inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.2em] text-brand uppercase;
+}
+
+/* Big condensed display headings */
+@utility display {
+	font-family: var(--font-heading);
+	font-weight: 800;
+	line-height: 0.95;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
 }
 
 @layer base {
 	html {
-		@apply font-body antialiased;
+		@apply scroll-smooth font-body text-ink antialiased;
+	}
+
+	body {
+		@apply bg-white;
 	}
 
 	[x-cloak] {
 		@apply hidden!;
+	}
+
+	/* Visible focus ring for keyboard users (WCAG 2.2 — 2.4.7 / 2.4.11) */
+	:focus-visible {
+		@apply outline-2 outline-offset-2 outline-brand;
 	}
 }

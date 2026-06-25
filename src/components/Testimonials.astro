@@ -1,0 +1,97 @@
+---
+const testimonials = [
+	{
+		quote: 'They became an extension of our team within a week. Fast, sharp, and they actually sweat the details.',
+		name: 'Sarah Mendez',
+		role: 'Founder, Loom Collective',
+		avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+	},
+	{
+		quote: 'We hand them the messy briefs and get back clean, shipped product. Easily our most reliable partner.',
+		name: "James O'Neil",
+		role: 'CEO, Northline Agency',
+		avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+	},
+	{
+		quote: 'Communicative to a fault — in the best way. I always know exactly where my project stands.',
+		name: 'Priya Raman',
+		role: 'Product Lead, Stacklight',
+		avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+	},
+	{
+		quote: 'Two senior devs, zero hand-holding. They quietly made our site twice as fast.',
+		name: 'Marco Bianchi',
+		role: 'Owner, Bianchi Studio',
+		avatar: 'https://randomuser.me/api/portraits/men/52.jpg',
+	},
+];
+---
+
+<section class='bg-white py-20 lg:py-28'>
+	<div class='container'>
+		<p class='eyebrow mb-4'>
+			<span class='inline-block h-2 w-2 bg-brand'></span>
+			Kind words
+		</p>
+		<h2 class='display mb-12 text-5xl text-ink sm:text-6xl'>What clients say</h2>
+
+		<div
+			class='testimonials-swiper swiper !pb-14'
+			style='--swiper-pagination-color:#ef4123;--swiper-pagination-bullet-inactive-color:#b3b3b3'
+		>
+			<div class='swiper-wrapper'>
+				{
+					testimonials.map((t) => (
+						<div class='swiper-slide h-auto'>
+							<figure class='flex h-full flex-col rounded-xl border border-hairline bg-paper p-7'>
+								<span
+									aria-hidden='true'
+									class='display text-5xl leading-none text-brand'
+								>
+									“
+								</span>
+								<blockquote class='mt-2 flex-1 text-lg leading-relaxed text-ink'>{t.quote}</blockquote>
+								<figcaption class='mt-6 flex items-center gap-3 border-t border-hairline pt-5'>
+									<img
+										src={t.avatar}
+										alt=''
+										width='44'
+										height='44'
+										loading='lazy'
+										class='h-11 w-11 rounded-full object-cover'
+									/>
+									<div>
+										<p class='font-bold text-ink'>{t.name}</p>
+										<p class='text-sm text-gray'>{t.role}</p>
+									</div>
+								</figcaption>
+							</figure>
+						</div>
+					))
+				}
+			</div>
+			<div class='swiper-pagination'></div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import Swiper from 'swiper';
+	import { Pagination, A11y, Keyboard } from 'swiper/modules';
+	import 'swiper/css';
+	import 'swiper/css/pagination';
+
+	new Swiper('.testimonials-swiper', {
+		modules: [Pagination, A11y, Keyboard],
+		slidesPerView: 1,
+		spaceBetween: 24,
+		grabCursor: true,
+		keyboard: { enabled: true },
+		a11y: { enabled: true },
+		pagination: { el: '.testimonials-swiper .swiper-pagination', clickable: true },
+		breakpoints: {
+			640: { slidesPerView: 2 },
+			1024: { slidesPerView: 3 },
+		},
+	});
+</script>

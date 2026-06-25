@@ -1,0 +1,71 @@
+---
+const services = [
+	{
+		num: '01',
+		title: 'E-Commerce Development',
+		desc: 'Shopify and headless storefronts engineered to load fast and convert.',
+	},
+	{
+		num: '02',
+		title: 'Web App Development',
+		desc: 'Robust, maintainable apps built with Vue, React and Laravel.',
+	},
+	{
+		num: '03',
+		title: 'Website Development',
+		desc: 'Fast, accessible marketing sites with pixel-clean front-ends.',
+	},
+	{
+		num: '04',
+		title: 'Speed Optimization',
+		desc: 'Core Web Vitals tuned to green — real, measurable performance.',
+	},
+];
+
+// pixel-square icon pattern per row
+const pattern = [1, 0, 1, 0, 1, 1, 0, 1, 1];
+---
+
+<section
+	id='services'
+	class='bg-white py-20 lg:py-28'
+>
+	<div class='container'>
+		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
+			<div>
+				<p class='eyebrow mb-4'>
+					<span class='inline-block h-2 w-2 bg-brand'></span>
+					What we do
+				</p>
+				<h2 class='display text-5xl text-ink sm:text-6xl'>Services</h2>
+			</div>
+			<p class='max-w-sm text-ink-soft md:text-right'>
+				Four ways we plug in — from storefront to full app, plus the speed to back it up.
+			</p>
+		</div>
+
+		<ul class='mt-12 border-t border-hairline'>
+			{
+				services.map((service) => (
+					<li class='group border-b border-hairline'>
+						<div class='grid grid-cols-[auto_1fr_auto] items-center gap-6 py-7 transition-colors hover:bg-paper/60'>
+							<span class='display text-3xl text-brand sm:text-4xl'>{service.num}</span>
+							<div>
+								<h3 class='display text-xl text-ink sm:text-2xl'>{service.title}</h3>
+								<p class='mt-1 max-w-xl text-ink-soft'>{service.desc}</p>
+							</div>
+							<div
+								aria-hidden='true'
+								class='hidden grid-cols-3 gap-1 sm:grid'
+							>
+								{pattern.map((on) => (
+									<span class={`h-2.5 w-2.5 ${on ? 'bg-brand' : 'bg-orange/40'}`} />
+								))}
+							</div>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

@@ -1,7 +1,15 @@
 ---
 import '../styles/main.css';
 
-const { title } = Astro.props;
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Red Pixel — We solve business problems with tech solutions',
+	description = 'Red Pixel is a two-person dev studio run by sisters Vivian & Daniela Guillen. We plug into your team, ship to your timeline, and become the reliable dev partner startups and agencies keep on speed-dial.',
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +20,25 @@ const { title } = Astro.props;
 			name='viewport'
 			content='width=device-width,initial-scale=1.0'
 		/>
+		<meta
+			name='description'
+			content={description}
+		/>
 		<title>{title}</title>
+
+		<meta
+			property='og:title'
+			content={title}
+		/>
+		<meta
+			property='og:description'
+			content={description}
+		/>
+		<meta
+			property='og:type'
+			content='website'
+		/>
+
 		<link
 			rel='preconnect'
 			href='https://fonts.googleapis.com'
@@ -20,12 +46,16 @@ const { title } = Astro.props;
 		<link
 			rel='preconnect'
 			href='https://fonts.gstatic.com'
+			crossorigin
+		/>
+		<link
+			rel='stylesheet'
+			href='https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap'
 		/>
 		<link
 			rel='icon'
 			type='image/png'
-			sizes='32x32'
-			href='/favicon.png'
+			href='/img/logo-mark.png'
 		/>
 
 		<script
@@ -34,6 +64,12 @@ const { title } = Astro.props;
 		></script>
 	</head>
 	<body>
+		<a
+			href='#main'
+			class='sr-only rounded-full bg-brand px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]'
+		>
+			Skip to content
+		</a>
 		<slot />
 	</body>
 </html>

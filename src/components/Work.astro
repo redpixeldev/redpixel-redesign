@@ -1,0 +1,72 @@
+---
+// Live site screenshots render via image.thum.io so cards are never empty.
+// Swap `domain` to update a thumbnail.
+const projects = [
+	{ name: 'Sponsonizer', domain: 'sponsonizer.com', tag: 'Sponsorship made simple for newsletters and creators.' },
+	{ name: 'Calculator Friend', domain: 'calculatorfriend.com', tag: 'A friendly library of smart calculators for everyday math.' },
+	{ name: 'Windybase', domain: 'windybase.com', tag: 'No-code database that small teams actually enjoy using.' },
+	{ name: 'Design2Tailwind', domain: 'design2tailwind.com', tag: 'Turn any design into clean, production-ready Tailwind.' },
+	{ name: 'Red Pixel Themes', domain: 'redpixelthemes.com', tag: 'Premium Tailwind themes and components for builders.' },
+	{ name: 'Red Pixel', domain: 'redpixel.io', tag: 'Our studio home — where every project starts.' },
+];
+
+const shot = (domain: string) => `https://image.thum.io/get/width/900/crop/675/https://${domain}`;
+const fallback =
+	"this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22900%22 height=%22675%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f7f7f7%22/></svg>'";
+---
+
+<section
+	id='work'
+	class='bg-paper py-20 lg:py-28'
+>
+	<div class='container'>
+		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
+			<div>
+				<p class='eyebrow mb-4'>
+					<span class='inline-block h-2 w-2 bg-brand'></span>
+					Latest work
+				</p>
+				<h2 class='display text-5xl text-ink sm:text-6xl'>Recent client work</h2>
+			</div>
+			<p class='max-w-sm text-ink-soft md:text-right'>
+				Real builds, real results. Hover any project for a closer look.
+			</p>
+		</div>
+
+		<ul class='mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+			{
+				projects.map((project) => (
+					<li>
+						<a
+							href={`https://${project.domain}`}
+							target='_blank'
+							rel='noopener noreferrer'
+							class='group flex h-full flex-col overflow-hidden rounded-xl border border-hairline bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
+						>
+							<div class='aspect-[4/3] overflow-hidden border-b border-hairline bg-paper'>
+								<img
+									src={shot(project.domain)}
+									alt={`Screenshot of the ${project.name} website`}
+									width='900'
+									height='675'
+									loading='lazy'
+									onerror={fallback}
+									class='h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105'
+								/>
+							</div>
+							<div class='flex flex-1 flex-col p-5'>
+								<div class='flex items-center justify-between'>
+									<h3 class='display text-lg text-ink'>{project.name}</h3>
+									<span class='font-mono text-xs font-bold text-brand opacity-0 transition-opacity group-hover:opacity-100'>
+										View site ↗
+									</span>
+								</div>
+								<p class='mt-2 text-sm text-ink-soft'>{project.tag}</p>
+							</div>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

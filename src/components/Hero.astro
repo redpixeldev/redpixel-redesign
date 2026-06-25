@@ -1,0 +1,83 @@
+---
+const email = 'vivian@redpixel.io';
+---
+
+<section
+	id='top'
+	class='relative overflow-hidden bg-paper pt-32 pb-20 lg:pt-40 lg:pb-28'
+>
+	<!-- faint pixel-grid texture -->
+	<div
+		aria-hidden='true'
+		class='pointer-events-none absolute inset-0 opacity-[0.4]'
+		style='background-image:linear-gradient(#0000000a 1px,transparent 1px),linear-gradient(90deg,#0000000a 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse at top right,#000,transparent 70%)'
+	>
+	</div>
+
+	<div class='container relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]'>
+		<div class='min-w-0'>
+			<p class='eyebrow mb-5'>
+				<span class='inline-block h-2 w-2 bg-brand'></span>
+				Two sisters · 10+ years
+			</p>
+
+			<h1 class='display text-5xl text-ink sm:text-6xl lg:text-7xl'>
+				We solve <span class='text-brand'>business problems</span> with tech solutions
+			</h1>
+
+			<p class='mt-6 max-w-xl text-lg leading-relaxed text-ink-soft'>
+				A two-person studio run by sisters Vivian &amp; Daniela Guillen. We plug into your team, ship to your
+				timeline, and become the reliable dev partner startups and agencies keep on speed-dial.
+			</p>
+
+			<div class='mt-8 flex flex-wrap items-center gap-4'>
+				<a
+					href={`mailto:${email}?subject=Project%20inquiry`}
+					class='btn-primary'
+				>
+					Start a project
+					<span aria-hidden='true'>→</span>
+				</a>
+				<a
+					href='#work'
+					class='btn-outline'
+				>
+					See our work
+				</a>
+			</div>
+		</div>
+
+		<!-- Code editor window mockup -->
+		<div class='relative min-w-0'>
+			<div
+				aria-hidden='true'
+				class='absolute -right-3 -top-3 grid grid-cols-3 gap-1'
+			>
+				<span class='h-2.5 w-2.5 bg-brand'></span>
+				<span class='h-2.5 w-2.5 bg-orange'></span>
+				<span class='h-2.5 w-2.5 bg-brand/40'></span>
+				<span class='h-2.5 w-2.5 bg-orange/40'></span>
+				<span class='h-2.5 w-2.5 bg-brand'></span>
+				<span class='h-2.5 w-2.5 bg-brand/20'></span>
+			</div>
+
+			<div class='overflow-hidden rounded-xl border border-hairline bg-white shadow-xl shadow-ink/5'>
+				<div class='flex items-center gap-2 border-b border-hairline bg-paper px-4 py-3'>
+					<span class='h-3 w-3 rounded-full bg-brand'></span>
+					<span class='h-3 w-3 rounded-full bg-orange'></span>
+					<span class='h-3 w-3 rounded-full bg-gray-light'></span>
+					<span class='ml-3 font-mono text-xs text-gray'>redpixel — studio.js</span>
+				</div>
+				<pre class='overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-ink-soft'><code><span class='text-brand'>const</span> studio = {'{'}
+  lead: <span class='text-orange'>'Vivian + Daniela'</span>,
+  pairs: <span class='text-brand'>10</span>,
+  stack: [<span class='text-orange'>'Vue'</span>, <span class='text-orange'>'Laravel'</span>, <span class='text-orange'>'Tailwind'</span>],
+  reliable: <span class='text-brand'>true</span>,
+{'}'}
+
+<span class='text-gray'>// ship to your timeline</span>
+ship(studio).<span class='text-brand'>often</span>()</code></pre>
+			</div>
+		</div>
+	</div>
+</section>
