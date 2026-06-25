@@ -9,8 +9,8 @@
 	--font-mono: 'Space Mono', monospace;
 
 	/* Brand palette — pulled exactly from the Red Pixel logo + design */
-	--color-brand: #ef4123; /* primary red — dominant accent */
-	--color-brand-bright: #ee1b23; /* hover / active */
+	--color-brand: #ee1b23; /* primary red — dominant accent */
+	--color-brand-bright: #ef4123; /* hover / active */
 	--color-orange: #f7941e; /* secondary accent, used sparingly */
 
 	--color-ink: #111111; /* headlines / body text */
