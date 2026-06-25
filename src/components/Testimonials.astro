@@ -35,8 +35,8 @@ const testimonials = [
 		<p class='eyebrow mb-3'>05 — Voices</p>
 		<h2 class='display mb-11 text-5xl text-ink sm:text-6xl'>What clients say</h2>
 
-		<!-- Desktop: static 2×2 grid -->
-		<div class='hidden gap-6 lg:grid lg:grid-cols-2'>
+		<!-- Desktop / tablet: static 2×2 grid -->
+		<div class='hidden gap-6 md:grid md:grid-cols-2'>
 			{
 				testimonials.map((t) => (
 					<figure class='flex h-full flex-col border border-hairline bg-white p-8'>
@@ -75,9 +75,11 @@ const testimonials = [
 			}
 		</div>
 
-		<!-- Mobile: Swiper carousel -->
+		<!-- Mobile only: Swiper carousel (wrapper carries the hide so Swiper's own
+		     .swiper{display:block} can't override md:hidden) -->
+		<div class='md:hidden'>
 		<div
-			class='testimonials-swiper swiper !pb-12 lg:hidden'
+			class='testimonials-swiper swiper !pb-12'
 			style='--swiper-pagination-color:#ef4123;--swiper-pagination-bullet-inactive-color:#b3b3b3'
 		>
 			<div class='swiper-wrapper'>
@@ -121,6 +123,7 @@ const testimonials = [
 				}
 			</div>
 			<div class='swiper-pagination'></div>
+		</div>
 		</div>
 	</div>
 </section>
