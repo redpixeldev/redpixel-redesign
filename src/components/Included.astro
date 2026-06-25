@@ -1,0 +1,49 @@
+---
+const features = [
+	{ title: 'Custom design', body: 'Designed around your business — never a template.' },
+	{ title: 'Professionally coded', body: 'Clean, hand-built code that stays fast and reliable.' },
+	{ title: 'Hosting included', body: 'Fast, secure hosting, fully handled for you.' },
+	{ title: 'Domain & SSL', body: 'We register your domain and secure it with SSL.' },
+	{ title: 'SEO optimization', body: 'Set up properly so customers can find you on Google.' },
+	{ title: 'Accessibility compliance', body: 'Built to accessibility standards so everyone can use it.' },
+	{ title: 'Fully responsive', body: 'Looks great on every phone, tablet, and screen.' },
+	{ title: 'Security & backups', body: 'Daily backups and security, always running.' },
+	{ title: 'Fast customer support', body: 'Message us and we reply fast — no ticket queues.' },
+];
+---
+
+<section
+	id='included'
+	class='bg-white py-20 lg:py-24'
+>
+	<div class='container'>
+		<div class='mx-auto mb-12 max-w-2xl text-center'>
+			<p class='eyebrow mb-3 justify-center'>// What's included</p>
+			<h2 class='display text-4xl text-ink sm:text-5xl'>
+				Everything. <span class='text-brand'>One monthly price.</span>
+			</h2>
+			<p class='mt-4 text-lg leading-relaxed text-ink-soft'>
+				No add-ons. No hidden fees. Everything your website needs is in the plan.
+			</p>
+		</div>
+
+		<ul class='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
+			{
+				features.map((feature) => (
+					<li class='rounded-2xl border-2 border-ink bg-white p-6 shadow-[6px_6px_0_var(--color-ink)]'>
+						<div class='mb-3 flex items-center gap-3.5'>
+							<span
+								aria-hidden='true'
+								class='flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-brand/10 text-lg font-bold text-brand'
+							>
+								✓
+							</span>
+							<h3 class='display text-lg text-ink'>{feature.title}</h3>
+						</div>
+						<p class='text-sm leading-relaxed text-ink-soft'>{feature.body}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

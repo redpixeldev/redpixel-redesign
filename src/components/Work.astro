@@ -1,35 +1,61 @@
 ---
 // Live site screenshots render via image.thum.io so cards are never empty.
-const projects = [
-	{ name: 'Sponsonizer', domain: 'sponsonizer.com', desc: 'Sponsorship matchmaking that pairs creators with the right brands.', tags: ['Web App', 'Vue'] },
-	{ name: 'Calculator Friend', domain: 'calculatorfriend.com', desc: 'A friendly library of smart calculators for everyday math.', tags: ['Tool', 'SEO'] },
-	{ name: 'Windybase', domain: 'windybase.com', desc: 'No-code databases that small teams actually enjoy using.', tags: ['SaaS', 'Laravel'] },
-	{ name: 'Design2Tailwind', domain: 'design2tailwind.com', desc: 'Turn any design into clean, production-ready Tailwind.', tags: ['Dev Tool'] },
-	{ name: 'Red Pixel Themes', domain: 'redpixelthemes.com', desc: 'Premium Tailwind UI themes and components for builders.', tags: ['Themes', 'Shop'] },
-	{ name: 'Red Pixel', domain: 'redpixel.io', desc: 'Our studio home — where every project starts.', tags: ['Studio'] },
+const defaultProjects = [
+	{ name: 'Sponsonizer', domain: 'sponsonizer.com', desc: 'Sponsorship matchmaking that pairs creators with the right brands.', sub: 'Sponsorship matchmaking', tags: ['Web App', 'Vue'] },
+	{ name: 'Calculator Friend', domain: 'calculatorfriend.com', desc: 'A friendly library of smart calculators for everyday math.', sub: 'Everyday calculators', tags: ['Tool', 'SEO'] },
+	{ name: 'Windybase', domain: 'windybase.com', desc: 'No-code databases that small teams actually enjoy using.', sub: 'No-code databases', tags: ['SaaS', 'Laravel'] },
+	{ name: 'Design2Tailwind', domain: 'design2tailwind.com', desc: 'Turn any design into clean, production-ready Tailwind.', sub: 'Design-to-code tool', tags: ['Dev Tool'] },
+	{ name: 'Red Pixel Themes', domain: 'redpixelthemes.com', desc: 'Premium Tailwind UI themes and components for builders.', sub: 'Premium web themes', tags: ['Themes', 'Shop'] },
+	{ name: 'Red Pixel', domain: 'redpixel.io', desc: 'Our studio home — where every project starts.', sub: 'Web design studio', tags: ['Studio'] },
 ];
+
+interface Project {
+	name: string;
+	domain: string;
+	desc?: string;
+	sub?: string;
+	tags?: string[];
+}
+interface Props {
+	id?: string;
+	eyebrow?: string;
+	title?: string;
+	intro?: string;
+	columns?: 3 | 4;
+	compact?: boolean;
+	projects?: Project[];
+}
+const {
+	id = 'work',
+	eyebrow = '// Latest jobs',
+	title = 'Recent client work',
+	intro = 'Real builds, real results. Hover any project for a closer look.',
+	columns = 3,
+	compact = false,
+	projects = defaultProjects,
+} = Astro.props;
 
 const shot = (domain: string) => `https://image.thum.io/get/width/900/crop/675/https://${domain}`;
 const fallback =
 	"this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22900%22 height=%22675%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f7f7f7%22/></svg>'";
+
+const gridCols = columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 ---
 
 <section
-	id='work'
+	id={id}
 	class='bg-paper py-20 lg:py-24'
 >
 	<div class='container'>
 		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
 			<div>
-				<p class='eyebrow mb-3'>// Latest jobs</p>
-				<h2 class='display text-5xl text-ink sm:text-6xl'>Recent client work</h2>
+				<p class='eyebrow mb-3'>{eyebrow}</p>
+				<h2 class='display text-5xl text-ink sm:text-6xl'>{title}</h2>
 			</div>
-			<p class='max-w-sm text-ink-soft md:text-right'>
-				Real builds, real results. Hover any project for a closer look.
-			</p>
+			{intro && <p class='max-w-sm text-ink-soft md:text-right'>{intro}</p>}
 		</div>
 
-		<ul class='mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+		<ul class={`mt-11 grid gap-6 sm:grid-cols-2 ${gridCols}`}>
 			{
 				projects.map((project) => (
 					<li>
@@ -54,20 +80,34 @@ const fallback =
 									class='h-full w-full object-cover object-top'
 								/>
 							</div>
-							<div class='flex flex-1 flex-col p-5'>
-								<div class='flex items-center justify-between gap-2'>
-									<h3 class='display text-xl text-ink'>{project.name}</h3>
-									<span class='text-sm font-bold text-brand'>View site ↗</span>
-								</div>
-								<p class='mt-2 flex-1 text-sm leading-relaxed text-ink-soft'>{project.desc}</p>
-								<div class='mt-3 flex flex-wrap gap-1.5'>
-									{project.tags.map((tag) => (
-										<span class='border border-hairline bg-paper px-2.5 py-1 font-mono text-[11px] tracking-wide text-gray'>
-											{tag}
-										</span>
-									))}
-								</div>
-							</div>
+							{
+								compact ? (
+									<div class='p-5'>
+										<div class='flex items-center justify-between gap-2'>
+											<h3 class='display text-lg text-ink'>{project.name}</h3>
+											<span class='font-mono text-xs font-bold text-brand'>View ↗</span>
+										</div>
+										<p class='mt-1 truncate text-sm text-gray'>{project.sub ?? project.desc}</p>
+									</div>
+								) : (
+									<div class='flex flex-1 flex-col p-5'>
+										<div class='flex items-center justify-between gap-2'>
+											<h3 class='display text-xl text-ink'>{project.name}</h3>
+											<span class='text-sm font-bold text-brand'>View site ↗</span>
+										</div>
+										<p class='mt-2 flex-1 text-sm leading-relaxed text-ink-soft'>{project.desc}</p>
+										{project.tags && (
+											<div class='mt-3 flex flex-wrap gap-1.5'>
+												{project.tags.map((tag) => (
+													<span class='border border-hairline bg-paper px-2.5 py-1 font-mono text-[11px] tracking-wide text-gray'>
+														{tag}
+													</span>
+												))}
+											</div>
+										)}
+									</div>
+								)
+							}
 						</a>
 					</li>
 				))

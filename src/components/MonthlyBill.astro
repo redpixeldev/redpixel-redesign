@@ -1,0 +1,50 @@
+---
+const honesty = [
+	'While you’re subscribed, your website and domain are yours to use — and we keep everything hosted, secure, and up to date.',
+	'There’s no big upfront cost and no contract. You can cancel anytime.',
+	'Because it’s a fully-managed service, if you ever cancel, the managed website and domain don’t continue with you — you’re paying for an all-in, done-for-you website, not a one-time build.',
+	'No penalties, no hassle, no lock-in. Simple and honest, start to finish.',
+];
+---
+
+<section
+	id='pricing'
+	class='bg-[#fdf2ec] py-20 lg:py-24'
+>
+	<div class='container grid items-center gap-12 lg:grid-cols-2 lg:gap-14'>
+		<div>
+			<p class='eyebrow mb-3'>// The deal in plain English</p>
+			<h2 class='display text-4xl text-ink sm:text-5xl'>
+				One monthly bill — and we handle the rest, for as long as you want it.
+			</h2>
+			<p class='mt-5 text-lg leading-relaxed text-ink-soft'>
+				Small-business websites start at <strong class='font-bold text-ink'>$99 a month, with no setup fee.</strong> The
+				only thing that varies is a one-time setup fee on larger, more complex sites — and it's scoped clearly before
+				anything starts, so there are no surprises.
+			</p>
+			<div class='mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-gray'>
+				<span>No contract</span>
+				<span class='text-hairline'>·</span>
+				<span>Cancel anytime</span>
+				<span class='text-hairline'>·</span>
+				<span>Same rate every month</span>
+			</div>
+		</div>
+
+		<ul class='flex flex-col gap-3.5'>
+			{
+				honesty.map((item) => (
+					<li class='flex gap-3.5 rounded-2xl bg-white p-5 shadow-md shadow-ink/5'>
+						<span
+							aria-hidden='true'
+							class='flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-brand text-sm font-bold text-white'
+						>
+							✓
+						</span>
+						<p class='text-[15px] leading-relaxed text-ink-soft'>{item}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

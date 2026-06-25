@@ -1,0 +1,129 @@
+---
+const email = 'vivian@redpixel.io';
+const chips = [
+	{ label: 'From $99/mo', color: 'var(--color-brand)' },
+	{ label: '$0 setup', color: 'var(--color-orange)' },
+	{ label: 'Cancel anytime', color: 'var(--color-brand)' },
+];
+---
+
+<section
+	id='top'
+	class='relative overflow-hidden bg-white pt-32 pb-20 lg:pt-40 lg:pb-28'
+>
+	<!-- pixel-particle field -->
+	<canvas
+		id='plans-particles'
+		aria-hidden='true'
+		class='pointer-events-none absolute inset-0 z-0 h-full w-full'
+	>
+	</canvas>
+	<!-- warm orange glow, top-right -->
+	<div
+		aria-hidden='true'
+		class='pointer-events-none absolute -right-32 -top-32 h-[460px] w-[460px] rounded-full'
+		style='background:radial-gradient(circle, rgba(247,148,30,0.16), transparent 70%)'
+	>
+	</div>
+
+	<div class='container relative z-[1] mx-auto max-w-3xl text-center'>
+		<p
+			class='mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand/20 bg-white px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-brand shadow-sm shadow-ink/5'
+		>
+			<span class='rp-blink-dot inline-block h-1.5 w-1.5 bg-brand'></span>
+			Fully-managed websites
+		</p>
+
+		<h1 class='display text-5xl text-ink sm:text-6xl lg:text-7xl'>
+			A professional website for your business — <span class='text-brand'>without the headache.</span>
+		</h1>
+
+		<p class='mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft'>
+			You don't need to know a thing about websites, hosting, or domains. Red Pixel designs, builds, hosts, and
+			manages everything — for one simple monthly price.
+		</p>
+
+		<div class='mt-8 flex flex-wrap items-center justify-center gap-4'>
+			<a
+				href={`mailto:${email}?subject=Project%20inquiry`}
+				class='btn-primary'
+			>
+				Get started
+				<span aria-hidden='true'>→</span>
+			</a>
+			<a
+				href='#pricing'
+				class='btn-outline'
+			>
+				See pricing
+			</a>
+		</div>
+
+		<ul class='mt-8 flex flex-wrap items-center justify-center gap-2.5'>
+			{
+				chips.map((chip) => (
+					<li class='inline-flex items-center gap-2 border border-[#f6dcc9] bg-[#fdf2ec] px-3.5 py-2 font-mono text-xs font-bold text-ink'>
+						<span
+							aria-hidden='true'
+							class='inline-block h-1.5 w-1.5'
+							style={`background:${chip.color}`}
+						/>
+						{chip.label}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<script>
+	const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const canvas = document.getElementById('plans-particles') as HTMLCanvasElement | null;
+
+	if (canvas && !reduce) {
+		const ctx = canvas.getContext('2d')!;
+		const colors = ['#EF4123', '#F7941E', '#EE1B23'];
+		const dpr = Math.min(window.devicePixelRatio || 1, 2);
+		let parts: { x: number; y: number; s: number; vy: number; vx: number; a: number; c: string }[] = [];
+
+		const resize = () => {
+			const r = canvas.getBoundingClientRect();
+			canvas.width = r.width * dpr;
+			canvas.height = r.height * dpr;
+			const count = Math.round(Math.min(60, r.width / 22));
+			parts = Array.from({ length: count }, () => ({
+				x: Math.random() * r.width,
+				y: Math.random() * r.height,
+				s: 3 + Math.random() * 6,
+				vy: 0.15 + Math.random() * 0.45,
+				vx: (Math.random() - 0.5) * 0.25,
+				a: 0.16 + Math.random() * 0.42,
+				c: colors[(Math.random() * colors.length) | 0],
+			}));
+		};
+		resize();
+		window.addEventListener('resize', resize);
+
+		const tick = () => {
+			const r = canvas.getBoundingClientRect();
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, r.width, r.height);
+			for (const p of parts) {
+				p.y -= p.vy;
+				p.x += p.vx;
+				if (p.y < -10) {
+					p.y = r.height + 10;
+					p.x = Math.random() * r.width;
+				}
+				if (p.x < -10) p.x = r.width + 10;
+				if (p.x > r.width + 10) p.x = -10;
+				ctx.globalAlpha = p.a;
+				ctx.fillStyle = p.c;
+				ctx.fillRect(p.x, p.y, p.s, p.s);
+			}
+			ctx.globalAlpha = 1;
+			requestAnimationFrame(tick);
+		};
+		tick();
+	}
+</script>

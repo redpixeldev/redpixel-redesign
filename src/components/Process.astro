@@ -1,5 +1,5 @@
 ---
-const steps = [
+const defaultSteps = [
 	{
 		num: '1',
 		title: 'Define',
@@ -21,6 +21,11 @@ const steps = [
 		desc: 'Tested, fast, and launched on your timeline — with support after go-live.',
 	},
 ];
+
+interface Props {
+	steps?: { num: string; title: string; desc: string }[];
+}
+const { steps = defaultSteps } = Astro.props;
 ---
 
 <section

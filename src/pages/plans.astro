@@ -1,0 +1,48 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import PlansHero from '@components/PlansHero.astro';
+import MonthlyBill from '@components/MonthlyBill.astro';
+import Included from '@components/Included.astro';
+import Process from '@components/Process.astro';
+import Work from '@components/Work.astro';
+import Testimonials from '@components/Testimonials.astro';
+import FAQ from '@components/FAQ.astro';
+import ReadyCTA from '@components/ReadyCTA.astro';
+import CTA from '@components/CTA.astro';
+import Footer from '@components/Footer.astro';
+
+// Plans process ends in ongoing Maintenance (vs the homepage's one-off "Ship").
+const planSteps = [
+	{ num: '1', title: 'Define', desc: 'We dig into the real problem, scope it tight, and agree on what success looks like.' },
+	{ num: '2', title: 'Design', desc: 'Clear plan, clean structure — we map the build before a line of code is written.' },
+	{ num: '3', title: 'Build', desc: 'Two senior devs heads-down, shipping in steady increments you can see.' },
+	{ num: '4', title: 'Maintenance', desc: 'Once you’re live, we keep it running — updates, fixes, and changes whenever you need them.' },
+];
+---
+
+<Layout
+	title='Red Pixel — A professional website for your business, without the headache'
+	description='Red Pixel designs, builds, hosts, and manages your whole website for one simple monthly price. From $99/mo, $0 setup, cancel anytime.'
+>
+	<Header />
+	<main id='main'>
+		<PlansHero />
+		<MonthlyBill />
+		<Included />
+		<Process steps={planSteps} />
+		<Work
+			id='work'
+			eyebrow='// Our work'
+			title='Real websites we manage'
+			intro=''
+			columns={4}
+			compact={true}
+		/>
+		<Testimonials />
+		<FAQ />
+		<ReadyCTA />
+		<CTA id='build' />
+	</main>
+	<Footer />
+</Layout>

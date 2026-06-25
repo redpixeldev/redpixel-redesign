@@ -1,9 +1,13 @@
 ---
+interface Props {
+	id?: string;
+}
+const { id = 'contact' } = Astro.props;
 const email = 'vivian@redpixel.io';
 ---
 
 <section
-	id='contact'
+	id={id}
 	class='py-20 lg:py-24'
 >
 	<div class='container'>

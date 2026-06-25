@@ -1,0 +1,90 @@
+---
+const faqs = [
+	{
+		q: 'Do I need to know anything about websites?',
+		a: 'Not a thing. We handle 100% of it — design, build, hosting, domain, security, and updates. You just tell us about your business.',
+	},
+	{
+		q: 'Is there really no setup fee?',
+		a: 'Correct — $0 down. You start for just the monthly price, with nothing upfront.',
+	},
+	{
+		q: 'What does "monthly help" include?',
+		a: 'Updates, content changes, new pages, swapping photos, answering questions — whatever you need. Just message us and it gets done.',
+	},
+	{
+		q: 'Is there a contract?',
+		a: 'No contract, ever. You can cancel anytime with no penalties and no lock-in.',
+	},
+	{
+		q: 'What happens if I cancel?',
+		a: 'You only pay while you’re using the service, so the managed website and domain don’t continue with you after you cancel. You’re paying for an all-in, done-for-you website — not a one-time build. We’ll always be upfront about this.',
+	},
+	{
+		q: 'Who handles hosting and the domain?',
+		a: 'We do — completely. Hosting, domain registration, SSL, and security are all included in your plan. Nothing for you to set up or renew.',
+	},
+	{
+		q: 'How fast are changes made?',
+		a: 'Fast. Message us and we reply quickly — most small changes are turned around in a day or two.',
+	},
+	{
+		q: 'How long until my site is live?',
+		a: 'Typically a couple of weeks from our first chat, depending on the size of the site. We’ll give you a clear timeline upfront.',
+	},
+];
+---
+
+<section
+	id='faq'
+	class='bg-white py-20 lg:py-24'
+>
+	<div class='container max-w-3xl'>
+		<div class='mb-12 text-center'>
+			<p class='eyebrow mb-3 justify-center'>// FAQ</p>
+			<h2 class='display text-4xl text-ink sm:text-5xl'>Questions, answered plainly</h2>
+		</div>
+
+		<ul class='flex flex-col gap-3'>
+			{
+				faqs.map((faq, i) => (
+					<li
+						x-data='{ open: false }'
+						class='overflow-hidden rounded-2xl border border-hairline bg-paper'
+					>
+						<h3>
+							<button
+								type='button'
+								@click='open = !open'
+								:aria-expanded='open'
+								aria-controls={`faq-panel-${i}`}
+								class='flex w-full items-center justify-between gap-4 px-6 py-5 text-left'
+							>
+								<span class='display text-lg text-ink'>{faq.q}</span>
+								<span
+									aria-hidden='true'
+									class='relative h-5 w-5 flex-none'
+								>
+									<span class='absolute left-0.5 top-2 h-0.5 w-4 bg-brand' />
+									<span
+										class='absolute left-2 top-0.5 h-4 w-0.5 bg-brand transition-transform duration-200'
+										:class="open ? 'rotate-90' : ''"
+									/>
+								</span>
+							</button>
+						</h3>
+						<div
+							id={`faq-panel-${i}`}
+							class='grid transition-all duration-300 ease-out'
+							:class="open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
+						>
+							<div class='overflow-hidden'>
+								<p class='px-6 pb-5 text-[15px] leading-relaxed text-ink-soft'>{faq.a}</p>
+							</div>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

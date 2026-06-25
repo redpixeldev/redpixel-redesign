@@ -1,0 +1,45 @@
+---
+const email = 'vivian@redpixel.io';
+---
+
+<section
+	id='contact'
+	class='bg-[#fdf2ec] py-20 lg:py-24'
+>
+	<div class='container max-w-5xl'>
+		<div class='relative overflow-hidden rounded-3xl bg-brand px-6 py-16 text-center sm:px-12'>
+			<!-- pixel decoration, top-right -->
+			<div
+				aria-hidden='true'
+				class='absolute right-6 top-6 grid grid-cols-4 gap-1.5 opacity-60'
+			>
+				<span class='h-3 w-3 bg-white/90'></span>
+				<span class='h-3 w-3 bg-white/40'></span>
+				<span></span>
+				<span class='h-3 w-3 bg-white/70'></span>
+				<span class='h-3 w-3 bg-white/30'></span>
+				<span class='h-3 w-3 bg-white/60'></span>
+				<span></span>
+				<span class='h-3 w-3 bg-white/50'></span>
+			</div>
+
+			<div class='relative mx-auto max-w-2xl'>
+				<h2 class='display text-4xl text-white sm:text-5xl lg:text-6xl'>
+					Ready for a website without the headache?
+				</h2>
+				<p class='mx-auto mt-5 max-w-lg text-lg leading-relaxed text-white/90'>
+					Tell us a little about your business and we'll take it from there. You run the shop — we'll handle the
+					website.
+				</p>
+				<p class='mt-4 font-mono text-sm text-white/90'>From $99/mo · $0 setup · Cancel anytime</p>
+				<a
+					href={`mailto:${email}?subject=Managed%20website%20enquiry`}
+					class='btn mt-8 bg-white px-7 py-4 text-base text-ink transition-colors duration-300 hover:bg-ink hover:text-white'
+				>
+					Get started
+					<span aria-hidden='true'>→</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

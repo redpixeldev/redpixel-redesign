@@ -1,12 +1,13 @@
 ---
+// Anchors are page-absolute (/#…) so the header works from any page (e.g. /plans).
 const navLinks = [
-	{ label: 'Home', href: '#top' },
-	{ label: 'About', href: '#about' },
-	{ label: 'Services', href: '#services' },
-	{ label: 'Process', href: '#process' },
-	{ label: 'Work', href: '#work' },
-	{ label: 'Products', href: '#products' },
-	{ label: 'Contact', href: '#contact' },
+	{ label: 'Home', href: '/#top' },
+	{ label: 'About', href: '/#about' },
+	{ label: 'Services', href: '/#services' },
+	{ label: 'Process', href: '/#process' },
+	{ label: 'Work', href: '/#work' },
+	{ label: 'Products', href: '/#products' },
+	{ label: 'Contact', href: '/#contact' },
 ];
 
 const email = 'vivian@redpixel.io';
@@ -23,7 +24,7 @@ const email = 'vivian@redpixel.io';
 		aria-label='Primary'
 	>
 		<a
-			href='#top'
+			href='/'
 			class='flex items-center'
 			aria-label='Red Pixel — home'
 		>
