@@ -4,7 +4,7 @@
 
 @theme {
 	--font-*: initial;
-	--font-heading: 'Maxwell', 'Oswald', sans-serif;
+	--font-heading: 'Oswald', sans-serif;
 	--font-body: 'Open Sans', sans-serif;
 	--font-mono: 'Space Mono', monospace;
 
@@ -42,17 +42,17 @@
 	@apply btn border border-hairline bg-white text-ink hover:border-ink;
 }
 
-/* Small mono eyebrow label with a pixel marker, used above each section heading */
+/* Small mono eyebrow label used above each section heading (e.g. "// ABOUT US") */
 @utility eyebrow {
-	@apply inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.2em] text-brand uppercase;
+	@apply inline-flex items-center gap-2 font-mono text-xs tracking-[0.16em] text-brand uppercase;
 }
 
-/* Big condensed display headings */
+/* Big condensed Oswald display headings */
 @utility display {
 	font-family: var(--font-heading);
-	font-weight: 800;
-	line-height: 0.95;
-	letter-spacing: 0.01em;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.01em;
 	text-transform: uppercase;
 }
 

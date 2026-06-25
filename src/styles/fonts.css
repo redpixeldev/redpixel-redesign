@@ -1,18 +1,8 @@
-/* Brand display font — Maxwell Small Caps Condensed (self-hosted; not on Google Fonts).
-   Body (Open Sans) + mono accent (Space Mono) are loaded from Google Fonts in Layout.astro. */
+/*
+Display (Oswald), body (Open Sans) and mono accent (Space Mono) are all loaded
+from Google Fonts in Layout.astro — no self-hosted faces are required.
 
-@font-face {
-	font-family: 'Maxwell';
-	src: url('/fonts/maxwell-book.otf') format('opentype');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Maxwell';
-	src: url('/fonts/maxwell-heavy.ttf') format('truetype');
-	font-weight: 800;
-	font-style: normal;
-	font-display: swap;
-}
+The brand's real display font, Maxwell Small Caps Condensed, is kept in
+public/fonts/ as a future option; to swap it in, add an @font-face here and
+point --font-heading at it in main.css.
+*/

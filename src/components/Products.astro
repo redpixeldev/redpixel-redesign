@@ -1,11 +1,13 @@
 ---
 const products = [
-	{ num: '01', name: 'Sponsonizer', desc: 'Land sponsors without the cold-email grind.', domain: 'sponsonizer.com' },
-	{ num: '02', name: 'Calculator Friend', desc: 'Hundreds of instant calculators, no spreadsheet.', domain: 'calculatorfriend.com' },
-	{ num: '03', name: 'Windybase', desc: 'Spin up a shareable database in minutes.', domain: 'windybase.com' },
-	{ num: '04', name: 'Design2Tailwind', desc: 'Paste a design, get clean Tailwind back.', domain: 'design2tailwind.com' },
-	{ num: '05', name: 'Red Pixel Themes', desc: 'Beautiful themes to launch your next site fast.', domain: 'redpixelthemes.com' },
+	{ num: 1, name: 'Sponsonizer', domain: 'sponsonizer.com', desc: 'Land sponsors without the cold-email grind.' },
+	{ num: 2, name: 'Calculator Friend', domain: 'calculatorfriend.com', desc: 'Hundreds of instant calculators, no spreadsheet.' },
+	{ num: 3, name: 'Windybase', domain: 'windybase.com', desc: 'Spin up a shareable database in minutes.' },
+	{ num: 4, name: 'Design2Tailwind', domain: 'design2tailwind.com', desc: 'Paste a design, get clean Tailwind back.' },
+	{ num: 5, name: 'Red Pixel Themes', domain: 'redpixelthemes.com', desc: 'Beautiful themes to launch your next idea fast.' },
 ];
+
+const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 ---
 
 <section
@@ -15,10 +17,7 @@ const products = [
 	<div class='container'>
 		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
 			<div>
-				<p class='eyebrow mb-4'>
-					<span class='inline-block h-2 w-2 bg-brand'></span>
-					We ship too
-				</p>
+				<p class='eyebrow mb-3'>// Our own</p>
 				<h2 class='display text-5xl text-ink sm:text-6xl'>Products we built</h2>
 			</div>
 			<p class='max-w-sm text-ink-soft md:text-right'>
@@ -26,49 +25,50 @@ const products = [
 			</p>
 		</div>
 
-		<ul class='mt-12 grid overflow-hidden rounded-xl border border-hairline sm:grid-cols-2 lg:grid-cols-3'>
+		<ul class='mt-10 grid border-l border-t border-hairline sm:grid-cols-2 lg:grid-cols-3'>
 			{
 				products.map((product) => (
-					<li class='border-b border-hairline sm:[&:nth-child(odd)]:border-r lg:[&:not(:nth-child(3n))]:border-r'>
-						<a
-							href={`https://${product.domain}`}
-							target='_blank'
-							rel='noopener noreferrer'
-							class='group relative flex h-full flex-col p-7 transition-colors hover:bg-paper'
-						>
+					<li class='border-b border-r border-hairline'>
+						<div class='group relative flex h-full flex-col p-6 transition-colors hover:bg-[#FFF4EE]'>
 							<span
 								aria-hidden='true'
-								class='display absolute right-5 top-4 text-5xl text-hairline transition-colors group-hover:text-brand/20'
+								class='display absolute right-5 top-4 text-3xl text-[#e6e6e6]'
 							>
-								{product.num}
+								0{product.num}
 							</span>
-							<div
-								aria-hidden='true'
-								class='grid w-fit grid-cols-2 gap-1'
+							<img
+								src={favicon(product.domain)}
+								alt=''
+								width='30'
+								height='30'
+								loading='lazy'
+								class='h-[30px] w-[30px] rounded-md'
+							/>
+							<h3 class='display mt-4 text-xl text-ink'>{product.name}</h3>
+							<p class='mt-2 flex-1 text-sm leading-relaxed text-ink-soft'>{product.desc}</p>
+							<a
+								href={`https://${product.domain}`}
+								target='_blank'
+								rel='noopener noreferrer'
+								class='mt-4 font-mono text-xs uppercase tracking-[0.1em] text-brand'
 							>
-								<span class='h-2.5 w-2.5 bg-brand' />
-								<span class='h-2.5 w-2.5 bg-orange/50' />
-								<span class='h-2.5 w-2.5 bg-orange/50' />
-								<span class='h-2.5 w-2.5 bg-brand' />
-							</div>
-							<h3 class='display mt-8 text-xl text-ink'>{product.name}</h3>
-							<p class='mt-1 flex-1 text-sm text-ink-soft'>{product.desc}</p>
-							<span class='mt-4 font-mono text-xs font-bold tracking-wide text-brand'>Visit →</span>
-						</a>
+								Visit ↗
+							</a>
+						</div>
 					</li>
 				))
 			}
-			<li class='border-b border-hairline bg-brand/5'>
-				<div class='flex h-full flex-col p-7'>
+			<li class='border-b border-r border-hairline bg-[#FDECE8]'>
+				<div class='flex h-full flex-col justify-center p-6'>
+					<p class='display text-2xl leading-tight text-ink'>More in<br />the works</p>
 					<div
 						aria-hidden='true'
-						class='grid w-fit grid-cols-3 gap-1'
+						class='mt-3 flex gap-1'
 					>
-						{Array.from({ length: 9 }).map((_, i) => <span class={`h-2.5 w-2.5 ${i % 2 ? 'bg-orange/50' : 'bg-brand'}`} />)}
+						<span class='h-2.5 w-2.5 bg-brand'></span>
+						<span class='h-2.5 w-2.5 bg-orange'></span>
+						<span class='h-2.5 w-2.5 bg-brand'></span>
 					</div>
-					<h3 class='display mt-8 text-xl text-ink'>More in the works</h3>
-					<p class='mt-1 flex-1 text-sm text-ink-soft'>New ideas already in the oven — check back soon.</p>
-					<span class='mt-4 font-mono text-xs font-bold tracking-wide text-gray'>Coming soon</span>
 				</div>
 			</li>
 		</ul>

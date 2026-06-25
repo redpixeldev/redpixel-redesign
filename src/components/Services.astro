@@ -1,42 +1,46 @@
 ---
+const R = '#EF4123';
+const O = '#F7941E';
+const G = '#f0d9d3';
+
 const services = [
 	{
 		num: '01',
 		title: 'E-Commerce Development',
 		desc: 'Shopify and headless storefronts engineered to load fast and convert.',
+		glyph: [G, R, G, R, R, R, G, R, O],
 	},
 	{
 		num: '02',
 		title: 'Web App Development',
 		desc: 'Robust, maintainable apps built with Vue, React and Laravel.',
+		glyph: [R, G, R, G, R, G, R, G, R],
 	},
 	{
 		num: '03',
 		title: 'Website Development',
 		desc: 'Fast, accessible marketing sites with pixel-clean front-ends.',
+		glyph: [R, R, R, G, O, G, R, R, R],
 	},
 	{
 		num: '04',
 		title: 'Speed Optimization',
 		desc: 'Core Web Vitals tuned to green — real, measurable performance.',
+		glyph: [G, G, R, G, R, G, R, O, G],
 	},
 ];
-
-// pixel-square icon pattern per row
-const pattern = [1, 0, 1, 0, 1, 1, 0, 1, 1];
 ---
 
 <section
 	id='services'
-	class='bg-white py-20 lg:py-28'
+	class='bg-white pt-20 lg:pt-28'
 >
 	<div class='container'>
-		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
+		<div
+			class='flex flex-col gap-4 border-b-2 border-ink pb-5 md:flex-row md:items-end md:justify-between'
+		>
 			<div>
-				<p class='eyebrow mb-4'>
-					<span class='inline-block h-2 w-2 bg-brand'></span>
-					What we do
-				</p>
+				<p class='eyebrow mb-3'>03 — What we do</p>
 				<h2 class='display text-5xl text-ink sm:text-6xl'>Services</h2>
 			</div>
 			<p class='max-w-sm text-ink-soft md:text-right'>
@@ -44,22 +48,25 @@ const pattern = [1, 0, 1, 0, 1, 1, 0, 1, 1];
 			</p>
 		</div>
 
-		<ul class='mt-12 border-t border-hairline'>
+		<ul>
 			{
 				services.map((service) => (
-					<li class='group border-b border-hairline'>
-						<div class='grid grid-cols-[auto_1fr_auto] items-center gap-6 py-7 transition-colors hover:bg-paper/60'>
-							<span class='display text-3xl text-brand sm:text-4xl'>{service.num}</span>
+					<li class='border-b border-hairline'>
+						<div class='group grid grid-cols-[64px_1fr] items-center gap-5 py-7 pl-2 transition-all duration-200 hover:bg-[#FFF4EE] hover:pl-5 sm:grid-cols-[90px_1fr_60px] sm:gap-6'>
+							<span class='display text-4xl text-brand'>{service.num}</span>
 							<div>
-								<h3 class='display text-xl text-ink sm:text-2xl'>{service.title}</h3>
-								<p class='mt-1 max-w-xl text-ink-soft'>{service.desc}</p>
+								<h3 class='display text-2xl text-ink sm:text-3xl'>{service.title}</h3>
+								<p class='mt-1.5 max-w-xl text-ink-soft'>{service.desc}</p>
 							</div>
 							<div
 								aria-hidden='true'
-								class='hidden grid-cols-3 gap-1 sm:grid'
+								class='hidden grid-cols-3 gap-[3px] justify-self-end sm:grid'
 							>
-								{pattern.map((on) => (
-									<span class={`h-2.5 w-2.5 ${on ? 'bg-brand' : 'bg-orange/40'}`} />
+								{service.glyph.map((cell) => (
+									<span
+										class='h-[11px] w-[11px]'
+										style={`background:${cell}`}
+									/>
 								))}
 							</div>
 						</div>

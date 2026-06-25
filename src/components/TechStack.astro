@@ -12,19 +12,16 @@ const stack = [
 ];
 ---
 
-<section class='border-y border-hairline bg-paper py-10'>
+<section class='bg-white pb-20 pt-10 lg:pb-28'>
 	<div class='container'>
-		<p class='eyebrow mb-5'>
-			<span class='inline-block h-2 w-2 bg-brand'></span>
-			Our stack
-		</p>
-		<ul class='flex flex-wrap gap-3'>
+		<p class='mb-4 font-mono text-xs uppercase tracking-[0.16em] text-gray'>Our stack</p>
+		<ul class='flex flex-wrap gap-2.5'>
 			{
 				stack.map((tech) => (
-					<li class='inline-flex items-center gap-2 rounded-full border border-hairline bg-white px-4 py-2 text-sm font-semibold text-ink-soft'>
+					<li class='inline-flex items-center gap-2.5 border border-hairline bg-white px-4 py-2.5 text-sm font-semibold text-ink-soft'>
 						<span
 							aria-hidden='true'
-							class='inline-block h-2.5 w-2.5 rounded-sm'
+							class='inline-block h-[14px] w-[14px]'
 							style={`background:${tech.color}`}
 						/>
 						{tech.name}
