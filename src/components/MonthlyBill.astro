@@ -1,4 +1,10 @@
 ---
+const chips = [
+	{ label: 'From $99/mo', color: 'var(--color-brand)' },
+	{ label: '$0 setup', color: 'var(--color-orange)' },
+	{ label: 'Cancel anytime', color: 'var(--color-brand)' },
+];
+
 const honesty = [
 	'While you’re subscribed, your website and domain are yours to use — and we keep everything hosted, secure, and up to date.',
 	'There’s no big upfront cost and no contract. You can cancel anytime.',
@@ -22,7 +28,21 @@ const honesty = [
 				only thing that varies is a one-time setup fee on larger, more complex sites — and it's scoped clearly before
 				anything starts, so there are no surprises.
 			</p>
-			<div class='mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-gray'>
+			<ul class='mt-6 flex flex-wrap gap-2.5'>
+				{
+					chips.map((chip) => (
+						<li class='inline-flex items-center gap-2 border border-[#f6dcc9] bg-white px-3.5 py-2 font-mono text-xs font-bold text-ink'>
+							<span
+								aria-hidden='true'
+								class='inline-block h-1.5 w-1.5'
+								style={`background:${chip.color}`}
+							/>
+							{chip.label}
+						</li>
+					))
+				}
+			</ul>
+			<div class='mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-gray'>
 				<span>No contract</span>
 				<span class='text-hairline'>·</span>
 				<span>Cancel anytime</span>
