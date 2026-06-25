@@ -14,9 +14,9 @@ import statamic from 'simple-icons/icons/statamic.svg?raw';
 const stack = [
 	{ name: 'Tailwind CSS', color: '#06B6D4', svg: tailwindcss },
 	{ name: 'Vue.js', color: '#4FC08D', svg: vuedotjs },
-	{ name: 'Nuxt.js', color: '#00DC82', svg: nuxt },
-	{ name: 'Alpine.js', color: '#8BC0D0', svg: alpinedotjs },
 	{ name: 'React', color: '#61DAFB', svg: react },
+	{ name: 'Alpine.js', color: '#8BC0D0', svg: alpinedotjs },
+	{ name: 'Nuxt.js', color: '#00DC82', svg: nuxt },
 	{ name: 'Laravel', color: '#FF2D20', svg: laravel },
 	{ name: 'Shopify', color: '#7AB55C', svg: shopify },
 	{ name: 'WordPress', color: '#21759B', svg: wordpress },
@@ -24,13 +24,13 @@ const stack = [
 ];
 ---
 
-<section class='bg-white pb-20 pt-10 lg:pb-24'>
+<section class='bg-white pt-10 pb-20 lg:pb-24'>
 	<div class='container'>
-		<p class='mb-4 font-mono text-xs uppercase tracking-[0.16em] text-gray'>Our stack</p>
+		<p class='text-gray mb-4 font-mono text-xs tracking-[0.16em] uppercase'>Our stack</p>
 		<ul class='flex flex-wrap gap-2.5'>
 			{
 				stack.map((tech) => (
-					<li class='inline-flex items-center gap-2.5 border border-hairline bg-white px-4 py-2.5 text-sm font-semibold text-ink-soft'>
+					<li class='border-hairline text-ink-soft inline-flex items-center gap-2.5 border bg-white px-4 py-2.5 text-sm font-semibold'>
 						<span
 							aria-hidden='true'
 							class='inline-flex h-[18px] w-[18px] [&>svg]:h-full [&>svg]:w-full'

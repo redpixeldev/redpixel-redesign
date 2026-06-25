@@ -1,62 +1,65 @@
 ---
 const stats = [
-	{ value: '10+', label: 'Years experience' },
-	{ value: '120+', label: 'Projects shipped' },
+	{ value: '12+', label: 'Years experience' },
+	{ value: '90+', label: 'Projects shipped' },
 	{ value: '2', label: 'Senior devs, no handoffs' },
 ];
 ---
 
 <section
 	id='about'
-	class='bg-paper py-20 lg:py-24'
->
+	class='bg-paper py-20 lg:py-24'>
 	<div class='container grid items-center gap-12 lg:grid-cols-2 lg:gap-14'>
 		<div class='relative'>
 			<span
 				aria-hidden='true'
-				class='absolute -left-3 -top-3 z-10 h-3.5 w-3.5 bg-brand'></span>
+				class='bg-brand absolute -top-3 -left-3 z-10 h-3.5 w-3.5'
+			></span>
 			<span
 				aria-hidden='true'
-				class='absolute -top-3 left-2 z-10 h-2 w-2 bg-orange'></span>
+				class='bg-orange absolute -top-3 left-2 z-10 h-2 w-2'
+			></span>
 			<span
 				aria-hidden='true'
-				class='absolute -bottom-3 -right-3 z-10 h-3.5 w-3.5 bg-orange'></span>
+				class='bg-orange absolute -right-3 -bottom-3 z-10 h-3.5 w-3.5'
+			></span>
 			<span
 				aria-hidden='true'
-				class='absolute -bottom-3 right-2 z-10 h-2 w-2 bg-brand'></span>
-			<div class='overflow-hidden rounded-2xl shadow-2xl shadow-ink/15'>
+				class='bg-brand absolute right-2 -bottom-3 z-10 h-2 w-2'
+			></span>
+			<div class='shadow-ink/15 overflow-hidden rounded-2xl shadow-2xl'>
 				<img
 					src='/img/sisters.png'
 					alt='Illustrated portrait of sisters Vivian and Daniela Guillen working together at a laptop'
 					width='1448'
 					height='1086'
 					loading='lazy'
-					class='block aspect-[4/3] w-full object-cover'
+					class='block aspect-4/3 w-full object-cover'
 				/>
 			</div>
 		</div>
 
 		<div>
 			<p class='eyebrow mb-3'>// About us</p>
-			<h2 class='display text-4xl text-ink sm:text-5xl'>
+			<h2 class='display text-ink text-4xl sm:text-5xl'>
 				We're Vivian <span class='text-brand'>&amp;</span> Daniela
 			</h2>
-			<p class='mt-5 text-lg leading-relaxed text-ink-soft'>
-				Two sisters, both professional web developers with a decade-plus of full-time freelance work behind us. We
-				define the need, deliver to your timeline, and communicate like we're in the next room — because reliable
-				beats flashy every single time.
+			<p class='text-ink-soft mt-5 text-lg leading-relaxed'>
+				Two sisters, both professional full-stack developers with a dozen-plus years of full-time freelance work behind
+				us. We understand your needs, define a clear scope, deliver to your timeline, and communicate like our lives
+				depend on it. Because reliable beats flashy every single time.
 			</p>
-			<p class='mt-4 text-lg leading-relaxed text-ink-soft'>
-				Startups and agencies keep us on speed-dial because we move fast without dropping the ball. You get a senior
-				pair, not a handoff chain.
+			<p class='text-ink-soft mt-4 text-lg leading-relaxed'>
+				Startups and agencies keep us on retainer because we move fast without losing focus. You get a senior pair, not
+				a handoff chain.
 			</p>
 
 			<dl class='mt-8 flex flex-wrap gap-3'>
 				{
 					stats.map((stat) => (
-						<div class='rounded-xl border border-brand/10 bg-white px-5 py-3.5 shadow-sm shadow-ink/5'>
-							<dt class='display text-3xl text-brand'>{stat.value}</dt>
-							<dd class='mt-0.5 text-xs font-semibold text-gray'>{stat.label}</dd>
+						<div class='border-brand/10 shadow-ink/5 rounded-xl border bg-white px-5 py-3.5 shadow-sm'>
+							<dt class='display text-brand text-3xl'>{stat.value}</dt>
+							<dd class='text-gray mt-0.5 text-xs font-semibold'>{stat.label}</dd>
 						</div>
 					))
 				}

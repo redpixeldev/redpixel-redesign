@@ -9,17 +9,16 @@ const navLinks = [
 	{ label: 'Contact', href: '/#contact' },
 ];
 
-const email = 'vivian@redpixel.io';
+const email = 'hello@redpixel.io';
 const year = new Date().getFullYear();
 ---
 
-<footer class='border-t border-hairline bg-white'>
+<footer class='border-hairline border-t bg-white'>
 	<div class='container py-12'>
 		<div class='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
 			<a
 				href='/'
-				aria-label='Red Pixel — home'
-			>
+				aria-label='Red Pixel — home'>
 				<img
 					src='/img/logo.png'
 					alt='Red Pixel'
@@ -34,8 +33,7 @@ const year = new Date().getFullYear();
 							<li>
 								<a
 									href={link.href}
-									class='text-sm font-semibold text-ink-soft transition-colors hover:text-brand'
-								>
+									class='text-ink-soft hover:text-brand text-sm font-semibold transition-colors'>
 									{link.label}
 								</a>
 							</li>
@@ -47,15 +45,26 @@ const year = new Date().getFullYear();
 			<div class='flex items-center gap-5 text-sm'>
 				<a
 					href={`mailto:${email}`}
-					class='font-bold text-ink transition-colors hover:text-brand'
-				>
-					{email}
+					class='text-ink-soft hover:text-brand font-bold transition-colors'>
+					<svg
+						xmlns='http://www.w3.org/2000/svg'
+						fill='none'
+						viewBox='0 0 24 24'
+						stroke-width='1.5'
+						stroke='currentColor'
+						class='size-5'>
+						<path
+							stroke-linecap='round'
+							stroke-linejoin='round'
+							d='M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75'
+						></path>
+					</svg>
 				</a>
 			</div>
 		</div>
 	</div>
 
-	<div class='border-t border-hairline py-5 text-center text-sm text-gray'>
+	<div class='border-hairline text-gray border-t py-5 text-center text-sm'>
 		&copy; {year} Red Pixel · Web Design &amp; Development
 	</div>
 </footer>

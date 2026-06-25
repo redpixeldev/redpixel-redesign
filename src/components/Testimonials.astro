@@ -1,62 +1,61 @@
 ---
 const testimonials = [
 	{
-		quote: 'They became an extension of our team within a week. Fast, sharp, and they actually sweat the details.',
-		name: 'Sarah Mendez',
-		role: 'Founder, Loom Collective',
+		quote:
+			"We've been using the team at Red Pixel for almost a year now and they have had an outsized impact on our ability to grow our web design agency. I absolutely cannot imagine not having them as a resource for us at this point. They're detailed oriented, efficient, and more than fair in their pricing. If you're looking for help turning your designs into HTML &amp; Tailwind, you've found it!",
+		name: 'Nick Sergeant',
+		role: 'Founder, FLXWebsites',
 		avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
 	},
 	{
-		quote: 'We hand them the messy briefs and get back clean, shipped product. Easily our most reliable partner.',
-		name: "James O'Neil",
-		role: 'CEO, Northbound Agency',
+		quote:
+			'Vivian and Daniela converted our website layout into a high-quality Tailwind project. Their code integrated perfectly into our Laravel project. We highly recommend their services!',
+		name: 'Dries',
+		role: 'CEO, Insight Media',
 		avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
 	},
-	{
-		quote: 'Communicative to a fault — in the best way. I always know exactly where my project stands.',
-		name: 'Priya Raman',
-		role: 'Product Lead, Stacklight',
-		avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-	},
-	{
-		quote: 'Two senior devs, zero hand-holding. They quietly made our site twice as fast.',
-		name: 'Marco Bianchi',
-		role: 'Owner, Bianchi Studio',
-		avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
-	},
+	// {
+	// 	quote: 'Communicative to a fault — in the best way. I always know exactly where my project stands.',
+	// 	name: 'Priya Raman',
+	// 	role: 'Product Lead, Stacklight',
+	// 	avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+	// },
+	// {
+	// 	quote: 'Two senior devs, zero hand-holding. They quietly made our site twice as fast.',
+	// 	name: 'Marco Bianchi',
+	// 	role: 'Owner, Bianchi Studio',
+	// 	avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
+	// },
 ];
 ---
 
 <section
 	id='voices'
-	class='border-y border-hairline bg-paper py-20 lg:py-24'
->
+	class='border-hairline bg-paper border-y py-20 lg:py-24'>
 	<div class='container'>
 		<p class='eyebrow mb-3'>// Voices</p>
-		<h2 class='display mb-11 text-5xl text-ink sm:text-6xl'>What clients say</h2>
+		<h2 class='display text-ink mb-11 text-5xl sm:text-6xl'>What clients say</h2>
 
 		<!-- Desktop / tablet: static 2×2 grid -->
 		<div class='hidden gap-6 md:grid md:grid-cols-2'>
 			{
 				testimonials.map((t) => (
-					<figure class='flex h-full flex-col border border-hairline bg-white p-8'>
+					<figure class='border-hairline flex h-full flex-col border bg-white p-8'>
 						<div class='flex items-start gap-4'>
 							<span
 								aria-hidden='true'
-								class='display text-6xl leading-[0.6] text-brand'
-							>
+								class='display text-brand text-6xl leading-[0.6]'>
 								&ldquo;
 							</span>
 							<span
 								aria-hidden='true'
-								class='mt-2 inline-flex gap-1'
-							>
-								<span class='h-1.5 w-1.5 bg-orange' />
-								<span class='h-1.5 w-1.5 bg-brand' />
+								class='mt-2 inline-flex gap-1'>
+								<span class='bg-orange h-1.5 w-1.5' />
+								<span class='bg-brand h-1.5 w-1.5' />
 							</span>
 						</div>
-						<blockquote class='mt-3 flex-1 text-lg leading-relaxed text-ink'>{t.quote}</blockquote>
-						<figcaption class='mt-5 flex items-center gap-3 border-t border-hairline pt-4'>
+						<blockquote class='text-ink mt-3 flex-1 text-lg leading-relaxed'>{t.quote}</blockquote>
+						<figcaption class='border-hairline mt-5 flex items-center gap-3 border-t pt-4'>
 							<img
 								src={t.avatar}
 								alt=''
@@ -66,8 +65,8 @@ const testimonials = [
 								class='h-11 w-11 rounded-full object-cover'
 							/>
 							<div>
-								<p class='display text-base text-ink'>{t.name}</p>
-								<p class='text-sm text-gray'>{t.role}</p>
+								<p class='display text-ink text-base'>{t.name}</p>
+								<p class='text-gray text-sm'>{t.role}</p>
 							</div>
 						</figcaption>
 					</figure>
@@ -78,52 +77,49 @@ const testimonials = [
 		<!-- Mobile only: Swiper carousel (wrapper carries the hide so Swiper's own
 		     .swiper{display:block} can't override md:hidden) -->
 		<div class='md:hidden'>
-		<div
-			class='testimonials-swiper swiper !pb-12'
-			style='--swiper-pagination-color:#ef4123;--swiper-pagination-bullet-inactive-color:#b3b3b3'
-		>
-			<div class='swiper-wrapper'>
-				{
-					testimonials.map((t) => (
-						<div class='swiper-slide h-auto'>
-							<figure class='flex h-full flex-col border border-hairline bg-white p-7'>
-								<div class='flex items-start gap-4'>
-									<span
-										aria-hidden='true'
-										class='display text-6xl leading-[0.6] text-brand'
-									>
-										&ldquo;
-									</span>
-									<span
-										aria-hidden='true'
-										class='mt-2 inline-flex gap-1'
-									>
-										<span class='h-1.5 w-1.5 bg-orange' />
-										<span class='h-1.5 w-1.5 bg-brand' />
-									</span>
-								</div>
-								<blockquote class='mt-3 flex-1 text-lg leading-relaxed text-ink'>{t.quote}</blockquote>
-								<figcaption class='mt-5 flex items-center gap-3 border-t border-hairline pt-4'>
-									<img
-										src={t.avatar}
-										alt=''
-										width='46'
-										height='46'
-										loading='lazy'
-										class='h-11 w-11 rounded-full object-cover'
-									/>
-									<div>
-										<p class='display text-base text-ink'>{t.name}</p>
-										<p class='text-sm text-gray'>{t.role}</p>
+			<div
+				class='testimonials-swiper swiper !pb-12'
+				style='--swiper-pagination-color:#ef4123;--swiper-pagination-bullet-inactive-color:#b3b3b3'>
+				<div class='swiper-wrapper'>
+					{
+						testimonials.map((t) => (
+							<div class='swiper-slide h-auto'>
+								<figure class='border-hairline flex h-full flex-col border bg-white p-7'>
+									<div class='flex items-start gap-4'>
+										<span
+											aria-hidden='true'
+											class='display text-brand text-6xl leading-[0.6]'>
+											&ldquo;
+										</span>
+										<span
+											aria-hidden='true'
+											class='mt-2 inline-flex gap-1'>
+											<span class='bg-orange h-1.5 w-1.5' />
+											<span class='bg-brand h-1.5 w-1.5' />
+										</span>
 									</div>
-								</figcaption>
-							</figure>
-						</div>
-					))
-				}
+									<blockquote class='text-ink mt-3 flex-1 text-lg leading-relaxed'>{t.quote}</blockquote>
+									<figcaption class='border-hairline mt-5 flex items-center gap-3 border-t pt-4'>
+										<img
+											src={t.avatar}
+											alt=''
+											width='46'
+											height='46'
+											loading='lazy'
+											class='h-11 w-11 rounded-full object-cover'
+										/>
+										<div>
+											<p class='display text-ink text-base'>{t.name}</p>
+											<p class='text-gray text-sm'>{t.role}</p>
+										</div>
+									</figcaption>
+								</figure>
+							</div>
+						))
+					}
+				</div>
+				<div class='swiper-pagination'></div>
 			</div>
-			<div class='swiper-pagination'></div>
-		</div>
 		</div>
 	</div>
 </section>

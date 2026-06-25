@@ -1,10 +1,30 @@
 ---
 const products = [
-	{ num: 1, name: 'Sponsonizer', domain: 'sponsonizer.com', desc: 'Land sponsors without the cold-email grind.' },
-	{ num: 2, name: 'Calculator Friend', domain: 'calculatorfriend.com', desc: 'Hundreds of instant calculators, no spreadsheet.' },
-	{ num: 3, name: 'Windybase', domain: 'windybase.com', desc: 'Spin up a shareable database in minutes.' },
-	{ num: 4, name: 'Design2Tailwind', domain: 'design2tailwind.com', desc: 'Paste a design, get clean Tailwind back.' },
-	{ num: 5, name: 'Red Pixel Themes', domain: 'redpixelthemes.com', desc: 'Beautiful themes to launch your next idea fast.' },
+	{ num: 1, name: 'Sponsonizer', domain: 'sponsonizer.com', desc: 'Calendly for newsletter sponsorships' },
+	{
+		num: 2,
+		name: 'Calculator Friend',
+		domain: 'calculatorfriend.com',
+		desc: 'Hundreds of instant calculators, free for educational use.',
+	},
+	{
+		num: 3,
+		name: 'Windybase',
+		domain: 'windybase.com',
+		desc: 'A curated collection of Tailwind CSS templates and component libraries.',
+	},
+	{
+		num: 4,
+		name: 'Design2Tailwind',
+		domain: 'design2tailwind.com',
+		desc: 'A productized service to convert your designs to Tailwind CSS markup.',
+	},
+	{
+		num: 5,
+		name: 'Tailwind Weekly',
+		domain: 'tailwindweekly.com',
+		desc: 'A weekly newsletter for Tailwind CSS developers and designers.',
+	},
 ];
 
 const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
@@ -12,33 +32,28 @@ const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=$
 
 <section
 	id='products'
-	class='bg-white pt-20 lg:pt-24 pb-8 lg:pb-8'
->
+	class='bg-white pt-20 pb-8 lg:pt-24 lg:pb-8'>
 	<div class='container'>
 		<div class='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
 			<div>
 				<p class='eyebrow mb-3'>// Our own</p>
-				<h2 class='display text-5xl text-ink sm:text-6xl'>Products we built</h2>
+				<h2 class='display text-ink text-5xl sm:text-6xl'>Products we built</h2>
 			</div>
-			<p class='max-w-sm text-ink-soft md:text-right'>
-				We don't just build for clients — we ship our own ideas, too.
-			</p>
+			<p class='text-ink-soft max-w-sm md:text-right'>We don't just build for clients — we ship our own ideas, too.</p>
 		</div>
 
-		<ul class='mt-10 grid border-l border-t border-hairline sm:grid-cols-2 lg:grid-cols-3'>
+		<ul class='border-hairline mt-10 grid border-t border-l sm:grid-cols-2 lg:grid-cols-3'>
 			{
 				products.map((product) => (
-					<li class='border-b border-r border-hairline'>
+					<li class='border-hairline border-r border-b'>
 						<a
 							href={`https://${product.domain}`}
 							target='_blank'
 							rel='noopener noreferrer'
-							class='relative flex h-full cursor-pointer flex-col p-6 ring-inset ring-brand transition-shadow duration-300 hover:ring-2'
-						>
+							class='ring-brand relative flex h-full cursor-pointer flex-col p-6 transition-shadow duration-300 ring-inset hover:ring-2'>
 							<span
 								aria-hidden='true'
-								class='display absolute right-5 top-4 text-3xl text-[#e6e6e6]'
-							>
+								class='display absolute top-4 right-5 text-3xl text-[#e6e6e6]'>
 								0{product.num}
 							</span>
 							<img
@@ -49,23 +64,22 @@ const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=$
 								loading='lazy'
 								class='h-[30px] w-[30px] rounded-md'
 							/>
-							<h3 class='display mt-4 text-xl text-ink'>{product.name}</h3>
-							<p class='mt-2 flex-1 text-sm leading-relaxed text-ink-soft'>{product.desc}</p>
-							<span class='mt-4 font-mono text-xs font-bold uppercase tracking-[0.1em] text-brand'>Visit ↗</span>
+							<h3 class='display text-ink mt-4 text-xl'>{product.name}</h3>
+							<p class='text-ink-soft mt-2 flex-1 text-sm leading-relaxed'>{product.desc}</p>
+							<span class='text-brand mt-4 font-mono text-xs font-bold tracking-[0.1em] uppercase'>Visit ↗</span>
 						</a>
 					</li>
 				))
 			}
-			<li class='border-b border-r border-hairline bg-[#FDECE8]'>
+			<li class='border-hairline border-r border-b bg-[#FDECE8]'>
 				<div class='flex h-full flex-col justify-center p-6'>
-					<p class='display text-2xl leading-tight text-ink'>More in<br />the works</p>
+					<p class='display text-ink text-2xl leading-tight'>More in<br />the works</p>
 					<div
 						aria-hidden='true'
-						class='mt-3 flex gap-1'
-					>
-						<span class='h-2.5 w-2.5 bg-brand'></span>
-						<span class='h-2.5 w-2.5 bg-orange'></span>
-						<span class='h-2.5 w-2.5 bg-brand'></span>
+						class='mt-3 flex gap-1'>
+						<span class='bg-brand h-2.5 w-2.5'></span>
+						<span class='bg-orange h-2.5 w-2.5'></span>
+						<span class='bg-brand h-2.5 w-2.5'></span>
 					</div>
 				</div>
 			</li>

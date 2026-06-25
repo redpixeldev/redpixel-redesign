@@ -13,19 +13,19 @@ const services = [
 	{
 		num: '02',
 		title: 'Web App Development',
-		desc: 'Robust, maintainable apps built with Vue, React and Laravel.',
+		desc: 'Robust, maintainable apps built with Vue/React, Inertia, and Laravel.',
 		glyph: [R, G, R, G, R, G, R, G, R],
 	},
 	{
 		num: '03',
 		title: 'Website Development',
-		desc: 'Fast, accessible marketing sites with pixel-clean front-ends.',
+		desc: 'Fast, accessible marketing sites with pixel-perfect front-ends.',
 		glyph: [R, R, R, G, O, G, R, R, R],
 	},
 	{
 		num: '04',
 		title: 'Speed Optimization',
-		desc: 'Core Web Vitals tuned to green — real, measurable performance.',
+		desc: 'Core Web Vitals tuned to green showing real, measurable performance.',
 		glyph: [G, G, R, G, R, G, R, O, G],
 	},
 ];
@@ -33,35 +33,31 @@ const services = [
 
 <section
 	id='services'
-	class='bg-white pt-20 lg:pt-24'
->
+	class='bg-white pt-20 lg:pt-24'>
 	<div class='container'>
-		<div
-			class='flex flex-col gap-4 border-b-2 border-ink pb-5 md:flex-row md:items-end md:justify-between'
-		>
+		<div class='border-ink flex flex-col gap-4 border-b-2 pb-5 md:flex-row md:items-end md:justify-between'>
 			<div>
 				<p class='eyebrow mb-3'>// What we do</p>
-				<h2 class='display text-5xl text-ink sm:text-6xl'>Services</h2>
+				<h2 class='display text-ink text-5xl sm:text-6xl'>Services</h2>
 			</div>
-			<p class='max-w-sm text-ink-soft md:text-right'>
-				Four ways we plug in — from storefront to full app, plus the speed to back it up.
+			<p class='text-ink-soft max-w-sm md:text-right'>
+				Four ways we can help, from storefront to full app, plus the speed to back it up.
 			</p>
 		</div>
 
 		<ul>
 			{
 				services.map((service) => (
-					<li class='border-b border-hairline'>
-						<div class='grid grid-cols-[64px_1fr] items-center gap-5 py-7 pl-2 sm:grid-cols-[90px_1fr_60px] sm:gap-6'>
-							<span class='display text-4xl text-brand'>{service.num}</span>
+					<li class='border-hairline border-b'>
+						<div class='grid grid-cols-[64px_1fr] gap-5 py-7 pl-2 sm:grid-cols-[90px_1fr_60px] sm:gap-6'>
+							<span class='display text-brand text-4xl'>{service.num}</span>
 							<div>
-								<h3 class='display text-2xl text-ink sm:text-3xl'>{service.title}</h3>
-								<p class='mt-1.5 max-w-xl text-ink-soft'>{service.desc}</p>
+								<h3 class='display text-ink text-2xl sm:text-3xl'>{service.title}</h3>
+								<p class='text-ink-soft mt-1.5 max-w-xl'>{service.desc}</p>
 							</div>
 							<div
 								aria-hidden='true'
-								class='hidden grid-cols-3 gap-[3px] justify-self-end sm:grid'
-							>
+								class='hidden grid-cols-3 gap-[3px] justify-self-end sm:grid'>
 								{service.glyph.map((cell) => (
 									<span
 										class='h-[11px] w-[11px]'

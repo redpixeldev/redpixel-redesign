@@ -4,60 +4,56 @@ const email = 'vivian@redpixel.io';
 
 <section
 	id='top'
-	class='relative flex items-center overflow-hidden bg-paper pt-32 pb-20 lg:min-h-[82vh] lg:pt-44 lg:pb-24'
-	style='background-image:linear-gradient(#ececec 1px,transparent 1px),linear-gradient(90deg,#ececec 1px,transparent 1px);background-size:34px 34px;background-position:center'
->
+	class='bg-paper relative flex items-center overflow-hidden pt-32 pb-20 lg:min-h-[60vh] lg:pt-44 lg:pb-24'
+	style='background-image:linear-gradient(#ececec 1px,transparent 1px),linear-gradient(90deg,#ececec 1px,transparent 1px);background-size:34px 34px;background-position:center'>
 	<!-- pixel-particle field -->
 	<canvas
 		id='hero-particles'
 		aria-hidden='true'
-		class='pointer-events-none absolute inset-0 z-0 h-full w-full'
-	>
+		class='pointer-events-none absolute inset-0 z-0 h-full w-full'>
 	</canvas>
 	<!-- radial fade so particles dissolve into the page behind the text -->
 	<div
 		aria-hidden='true'
 		class='pointer-events-none absolute inset-0 z-[1]'
-		style='background:radial-gradient(60% 60% at 50% 35%, rgba(247,247,247,0) 0%, #F7F7F7 100%)'
-	>
+		style='background:radial-gradient(60% 60% at 50% 35%, rgba(247,247,247,0) 0%, #F7F7F7 100%)'>
 	</div>
 
-	<div class='container relative z-[2] grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]'>
+	<div class='relative z-[2] container grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]'>
 		<div class='min-w-0'>
 			<p
-				class='mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand/20 bg-white px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-brand shadow-sm shadow-ink/5'
-			>
-				<span class='rp-blink-dot inline-block h-1.5 w-1.5 bg-brand'></span>
-				Two sisters · 10+ years
+				class='border-brand/20 text-brand shadow-ink/5 mb-6 inline-flex items-center gap-2.5 rounded-full border bg-white px-3.5 py-2 font-mono text-xs font-bold tracking-[0.16em] uppercase shadow-sm'>
+				<span class='rp-blink-dot bg-brand inline-block h-1.5 w-1.5'></span>
+				Two sisters · 12+ years
 			</p>
 
-			<h1 class='display text-5xl text-ink sm:text-6xl lg:text-7xl'>
-				We solve <br/> <span class='text-brand'>business problems</span> with
+			<h1 class='display text-ink text-5xl sm:text-6xl lg:text-7xl'>
+				We solve <br />
+				<span class='text-brand'>business problems</span> with
 				<span class='relative whitespace-nowrap'>
 					tech solutions
 					<span
 						aria-hidden='true'
-						class='absolute inset-x-0 bottom-1.5 -z-10 h-2.5 bg-orange/35'></span>
+						class='bg-orange/35 absolute inset-x-0 bottom-1.5 -z-10 h-2.5'
+					></span>
 				</span>
 			</h1>
 
-			<p class='mt-6 max-w-xl text-lg leading-relaxed text-ink-soft'>
-				A two-person studio run by sisters Vivian &amp; Daniela Guillen. We plug into your team, ship to your
-				timeline, and become the reliable dev partner startups and agencies keep on speed-dial.
+			<p class='text-ink-soft mt-6 max-w-xl text-lg leading-relaxed'>
+				A two-person studio run by sisters Vivian &amp; Daniela Guillen. We plug into your team, ship to your timeline,
+				and become the reliable dev partner startups and agencies keep on retainer.
 			</p>
 
 			<div class='mt-8 flex flex-wrap items-center gap-4'>
 				<a
 					href={`mailto:${email}?subject=Project%20inquiry`}
-					class='btn-primary'
-				>
+					class='btn-primary'>
 					Start a project
 					<span aria-hidden='true'>→</span>
 				</a>
 				<a
 					href='#work'
-					class='btn-outline'
-				>
+					class='btn-outline'>
 					See our work
 				</a>
 			</div>
@@ -67,30 +63,30 @@ const email = 'vivian@redpixel.io';
 		<div class='rp-float relative min-w-0'>
 			<div
 				aria-hidden='true'
-				class='absolute -right-3 -top-3 grid grid-cols-3 gap-1'
-			>
-				<span class='h-2.5 w-2.5 bg-brand'></span>
-				<span class='h-2.5 w-2.5 bg-orange'></span>
-				<span class='h-2.5 w-2.5 bg-brand/40'></span>
-				<span class='h-2.5 w-2.5 bg-orange/40'></span>
-				<span class='h-2.5 w-2.5 bg-brand'></span>
-				<span class='h-2.5 w-2.5 bg-brand/20'></span>
+				class='absolute -top-3 -right-3 grid grid-cols-3 gap-1'>
+				<span class='bg-brand h-2.5 w-2.5'></span>
+				<span class='bg-orange h-2.5 w-2.5'></span>
+				<span class='bg-brand/40 h-2.5 w-2.5'></span>
+				<span class='bg-orange/40 h-2.5 w-2.5'></span>
+				<span class='bg-brand h-2.5 w-2.5'></span>
+				<span class='bg-brand/20 h-2.5 w-2.5'></span>
 			</div>
 
-			<div class='overflow-hidden rounded-xl border border-hairline bg-white shadow-xl shadow-ink/10'>
-				<div class='flex items-center gap-2 border-b border-hairline bg-paper px-4 py-3'>
-					<span class='h-3 w-3 rounded-full bg-brand'></span>
-					<span class='h-3 w-3 rounded-full bg-orange'></span>
-					<span class='h-3 w-3 rounded-full bg-gray-light'></span>
-					<span class='ml-3 font-mono text-xs text-gray'>redpixel.io — ship.vue</span>
+			<div class='border-hairline shadow-ink/10 overflow-hidden rounded-xl border bg-white shadow-xl'>
+				<div class='border-hairline bg-paper flex items-center gap-2 border-b px-4 py-3'>
+					<span class='bg-brand h-3 w-3 rounded-full'></span>
+					<span class='bg-orange h-3 w-3 rounded-full'></span>
+					<span class='bg-gray-light h-3 w-3 rounded-full'></span>
+					<span class='text-gray ml-3 font-mono text-xs'>redpixel.io — ship.vue</span>
 				</div>
-				<pre class='overflow-x-auto p-5 font-mono text-[13px] leading-[1.9] text-ink-soft'><code><span class='select-none text-gray-light'>01</span>  <span class='text-brand'>const</span> studio = <span class='text-orange'>{'{'}</span>
+				<pre
+					class='text-ink-soft overflow-x-auto p-5 font-mono text-[13px] leading-[1.9]'><code><span class='select-none text-gray-light'>01</span>  <span class='text-brand'>const</span> studio = <span class='text-orange'>{'{'}</span>
 <span class='select-none text-gray-light'>02</span>    team: <span class='text-[#1a8a4a]'>'Vivian + Daniela'</span>,
 <span class='select-none text-gray-light'>03</span>    years: <span class='text-brand'>10</span>,
-<span class='select-none text-gray-light'>04</span>    stack: [<span class='text-[#1a8a4a]'>'Vue'</span>, <span class='text-[#1a8a4a]'>'Laravel'</span>, <span class='text-[#1a8a4a]'>'Tailwind'</span>],
+<span class='select-none text-gray-light'>04</span>    stack: [<span class='text-[#1a8a4a]'>'Vue'</span>, <span class='text-[#1a8a4a]'>'Laravel'</span>, <span class='text-[#1a8a4a]'>'Shopify'</span>, <span class='text-[#1a8a4a]'>'Tailwind'</span>],
 <span class='select-none text-gray-light'>05</span>    reliable: <span class='text-brand'>true</span>,
 <span class='select-none text-gray-light'>06</span>  <span class='text-orange'>{'}'}</span>;
-<span class='select-none text-gray-light'>07</span>  <span class='text-brand'>ship</span>(studio).<span class='text-orange'>onTime</span>();<span class='rp-caret ml-0.5 inline-block h-4 w-2 translate-y-[3px] bg-ink'></span></code></pre>
+<span class='select-none text-gray-light'>07</span>  <span class='text-brand'>ship</span>(studio).<span class='text-orange'>onTime</span>();<span class='rp-caret ml-0.5 inline-block h-4 w-2 translate-y-[3px] bg-ink' /></code></pre>
 			</div>
 		</div>
 	</div>

@@ -14,23 +14,32 @@ import Footer from '@components/Footer.astro';
 
 // Plans process ends in ongoing Maintenance (vs the homepage's one-off "Ship").
 const planSteps = [
-	{ num: '1', title: 'Define', desc: 'We dig into the real problem, scope it tight, and agree on what success looks like.' },
-	{ num: '2', title: 'Design', desc: 'Clear plan, clean structure — we map the build before a line of code is written.' },
+	{
+		num: '1',
+		title: 'Define',
+		desc: 'We dig into the real problem, scope it tight, and agree on what success looks like.',
+	},
+	{
+		num: '2',
+		title: 'Design',
+		desc: 'Clear plan, clean structure — we map the build before a line of code is written.',
+	},
 	{ num: '3', title: 'Build', desc: 'Two senior devs heads-down, shipping in steady increments you can see.' },
-	{ num: '4', title: 'Maintenance', desc: 'Once you’re live, we keep it running — updates, fixes, and changes whenever you need them.' },
+	{
+		num: '4',
+		title: 'Maintenance',
+		desc: 'Once you’re live, we keep it running — updates, fixes, and changes whenever you need them.',
+	},
 ];
 ---
 
 <Layout
 	title='Red Pixel — A professional website for your business, without the headache'
-	description='Red Pixel designs, builds, hosts, and manages your whole website for one simple monthly price. From $99/mo, $0 setup, cancel anytime.'
->
-	<!-- gradient accent bar at the very top (matches the Plan C design) -->
+	description='Red Pixel designs, builds, hosts, and manages your whole website for one simple monthly price. From $99/mo, $0 setup, cancel anytime.'>
 	<div
 		aria-hidden='true'
-		class='fixed inset-x-0 top-0 z-[60] h-1'
-		style='background:linear-gradient(90deg,#EF4123,#F7941E)'
-	>
+		class='fixed inset-x-0 top-0 z-60 h-1'
+		style='background:linear-gradient(90deg,#EF4123,#F7941E)'>
 	</div>
 	<Header />
 	<main id='main'>

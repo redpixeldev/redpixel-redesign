@@ -3,7 +3,7 @@ const defaultSteps = [
 	{
 		num: '1',
 		title: 'Define',
-		desc: 'We dig into the real problem, scope it tight, and agree on what success looks like.',
+		desc: 'We sit down with you to understand the problem, define the scope, and agree on what success looks like.',
 	},
 	{
 		num: '2',
@@ -30,13 +30,12 @@ const { steps = defaultSteps } = Astro.props;
 
 <section
 	id='process'
-	class='border-y border-hairline bg-white py-20 lg:py-24'
->
+	class='border-hairline border-y bg-white py-20 lg:py-24'>
 	<div class='container'>
 		<div class='mx-auto max-w-xl text-center'>
 			<p class='eyebrow mb-3 justify-center'>// How we work</p>
-			<h2 class='display text-4xl text-ink sm:text-5xl'>A simple, honest process</h2>
-			<p class='mt-4 text-lg leading-relaxed text-ink-soft'>
+			<h2 class='display text-ink text-4xl sm:text-5xl'>A simple, honest process</h2>
+			<p class='text-ink-soft mt-4 text-lg leading-relaxed'>
 				No bloated agency runaround. Four clear steps from first hello to shipped.
 			</p>
 		</div>
@@ -45,22 +44,22 @@ const { steps = defaultSteps } = Astro.props;
 			<!-- dashed connector line (desktop only) -->
 			<span
 				aria-hidden='true'
-				class='absolute left-[12%] right-[12%] top-7 hidden h-0.5 lg:block'
+				class='absolute top-7 right-[12%] left-[12%] hidden h-0.5 lg:block'
 				style='background:repeating-linear-gradient(90deg,#f0c9bf 0,#f0c9bf 7px,transparent 7px,transparent 14px)'
 			></span>
 
 			{
 				steps.map((step) => (
 					<li class='relative text-center'>
-						<div class='relative mx-auto flex h-14 w-14 items-center justify-center bg-brand shadow-lg shadow-brand/30'>
+						<div class='bg-brand shadow-brand/30 relative mx-auto flex h-14 w-14 items-center justify-center shadow-lg'>
 							<span class='display text-2xl text-white'>{step.num}</span>
 							<span
 								aria-hidden='true'
-								class='absolute -right-1.5 -top-1.5 h-2 w-2 bg-orange'
+								class='bg-orange absolute -top-1.5 -right-1.5 h-2 w-2'
 							/>
 						</div>
-						<h3 class='display mt-6 text-xl text-ink'>{step.title}</h3>
-						<p class='mx-auto mt-2 max-w-xs text-sm leading-relaxed text-ink-soft'>{step.desc}</p>
+						<h3 class='display text-ink mt-6 text-xl'>{step.title}</h3>
+						<p class='text-ink-soft mx-auto mt-2 max-w-xs text-sm leading-relaxed'>{step.desc}</p>
 					</li>
 				))
 			}
