@@ -1,5 +1,6 @@
 ---
-const email = 'vivian@redpixel.io';
+// Real enquiry form — posts to vivian@redpixel.io via FormSubmit (works on static hosting).
+const formAction = 'https://formsubmit.co/vivian@redpixel.io';
 ---
 
 <section
@@ -7,7 +8,7 @@ const email = 'vivian@redpixel.io';
 	class='bg-[#fdf2ec] py-20 lg:py-24'
 >
 	<div class='container max-w-5xl'>
-		<div class='relative overflow-hidden rounded-3xl bg-brand px-6 py-16 text-center sm:px-12'>
+		<div class='relative overflow-hidden rounded-3xl bg-brand px-6 py-12 sm:px-12 sm:py-14'>
 			<!-- pixel decoration, top-right -->
 			<div
 				aria-hidden='true'
@@ -23,22 +24,91 @@ const email = 'vivian@redpixel.io';
 				<span class='h-3 w-3 bg-white/50'></span>
 			</div>
 
-			<div class='relative mx-auto max-w-2xl'>
-				<h2 class='display text-4xl text-white sm:text-5xl lg:text-6xl'>
-					Ready for a website without the headache?
-				</h2>
-				<p class='mx-auto mt-5 max-w-lg text-lg leading-relaxed text-white/90'>
-					Tell us a little about your business and we'll take it from there. You run the shop — we'll handle the
-					website.
-				</p>
-				<p class='mt-4 font-mono text-sm text-white/90'>From $99/mo · $0 setup · Cancel anytime</p>
-				<a
-					href={`mailto:${email}?subject=Managed%20website%20enquiry`}
-					class='btn mt-8 bg-white px-7 py-4 text-base text-ink transition-colors duration-300 hover:bg-ink hover:text-white'
+			<div class='relative grid items-center gap-10 lg:grid-cols-2 lg:gap-12'>
+				<div>
+					<h2 class='display text-4xl text-white sm:text-5xl'>
+						Ready for a website without the headache?
+					</h2>
+					<p class='mt-4 max-w-md text-lg leading-relaxed text-white/90'>
+						Tell us a little about your business and we'll take it from there. You run the shop — we'll handle the
+						website.
+					</p>
+					<p class='mt-4 font-mono text-sm text-white/90'>From $99/mo · $0 setup · Cancel anytime</p>
+				</div>
+
+				<form
+					action={formAction}
+					method='POST'
+					class='flex flex-col gap-4 rounded-2xl bg-white p-6 sm:p-7'
 				>
-					Get started
-					<span aria-hidden='true'>→</span>
-				</a>
+					<input
+						type='hidden'
+						name='_subject'
+						value='New Red Pixel website enquiry'
+					/>
+					<input
+						type='hidden'
+						name='_template'
+						value='table'
+					/>
+					<div>
+						<label
+							for='rp-name'
+							class='mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-gray'>Your name</label>
+						<input
+							id='rp-name'
+							name='name'
+							required
+							placeholder='Jane Smith'
+							class='w-full rounded-lg border border-hairline px-3.5 py-3 text-[15px] text-ink focus:border-brand focus:ring-0'
+						/>
+					</div>
+					<div>
+						<label
+							for='rp-biz'
+							class='mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-gray'>Business name</label>
+						<input
+							id='rp-biz'
+							name='business'
+							required
+							placeholder="Jane's Bakery"
+							class='w-full rounded-lg border border-hairline px-3.5 py-3 text-[15px] text-ink focus:border-brand focus:ring-0'
+						/>
+					</div>
+					<div>
+						<label
+							for='rp-email'
+							class='mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-gray'>Email</label>
+						<input
+							id='rp-email'
+							name='email'
+							type='email'
+							required
+							placeholder='jane@email.com'
+							class='w-full rounded-lg border border-hairline px-3.5 py-3 text-[15px] text-ink focus:border-brand focus:ring-0'
+						/>
+					</div>
+					<div>
+						<label
+							for='rp-msg'
+							class='mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-gray'>
+							Message <span class='normal-case text-gray-light'>(optional)</span>
+						</label>
+						<textarea
+							id='rp-msg'
+							name='message'
+							rows='2'
+							placeholder='Tell us about your business…'
+							class='w-full resize-y rounded-lg border border-hairline px-3.5 py-3 text-[15px] text-ink focus:border-brand focus:ring-0'
+						></textarea>
+					</div>
+					<button
+						type='submit'
+						class='btn-primary mt-1 w-full'
+					>
+						Get started
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>

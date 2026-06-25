@@ -5,6 +5,11 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   compressHTML: false,
 
+  // Honor the PORT env var (e.g. the preview harness's assigned port); fall back to 4340.
+  server: {
+      port: Number(process.env.PORT) || 4340,
+	},
+
   build: {
       assets: 'assets',
       format: 'file',
