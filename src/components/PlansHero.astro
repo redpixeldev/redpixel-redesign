@@ -1,10 +1,5 @@
 ---
 const email = 'vivian@redpixel.io';
-const chips = [
-	{ label: 'From $99/mo', color: 'var(--color-brand)' },
-	{ label: '$0 setup', color: 'var(--color-orange)' },
-	{ label: 'Cancel anytime', color: 'var(--color-brand)' },
-];
 ---
 
 <section
@@ -58,21 +53,6 @@ const chips = [
 				See pricing
 			</a>
 		</div>
-
-		<ul class='mt-8 flex flex-wrap items-center justify-center gap-2.5'>
-			{
-				chips.map((chip) => (
-					<li class='inline-flex items-center gap-2 border border-[#f6dcc9] bg-[#fdf2ec] px-3.5 py-2 font-mono text-xs font-bold text-ink'>
-						<span
-							aria-hidden='true'
-							class='inline-block h-1.5 w-1.5'
-							style={`background:${chip.color}`}
-						/>
-						{chip.label}
-					</li>
-				))
-			}
-		</ul>
 	</div>
 </section>
 
