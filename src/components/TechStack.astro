@@ -1,22 +1,26 @@
 ---
-// Real brand logos from Remix Icon (remixicon.com), inlined as SVG so they're
-// self-hosted and colorable. Remix only ships 4 of our 9 brands — the rest fall
-// back to a brand-colored square until we have proper marks.
-import tailwindIcon from 'remixicon/icons/Logos/tailwind-css-fill.svg?raw';
-import vueIcon from 'remixicon/icons/Logos/vuejs-fill.svg?raw';
-import reactIcon from 'remixicon/icons/Logos/reactjs-fill.svg?raw';
-import wordpressIcon from 'remixicon/icons/Logos/wordpress-fill.svg?raw';
+// All brand logos from a single library — Simple Icons (simpleicons.org, CC0).
+// Inlined as SVG so they're self-hosted (no CDN) and colored with each brand hex.
+import tailwindcss from 'simple-icons/icons/tailwindcss.svg?raw';
+import vuedotjs from 'simple-icons/icons/vuedotjs.svg?raw';
+import nuxt from 'simple-icons/icons/nuxt.svg?raw';
+import alpinedotjs from 'simple-icons/icons/alpinedotjs.svg?raw';
+import react from 'simple-icons/icons/react.svg?raw';
+import laravel from 'simple-icons/icons/laravel.svg?raw';
+import shopify from 'simple-icons/icons/shopify.svg?raw';
+import wordpress from 'simple-icons/icons/wordpress.svg?raw';
+import statamic from 'simple-icons/icons/statamic.svg?raw';
 
 const stack = [
-	{ name: 'Tailwind CSS', color: '#38bdf8', svg: tailwindIcon },
-	{ name: 'Vue.js', color: '#42b883', svg: vueIcon },
-	{ name: 'Nuxt.js', color: '#00dc82', svg: null },
-	{ name: 'Alpine.js', color: '#77c1d2', svg: null },
-	{ name: 'React', color: '#61dafb', svg: reactIcon },
-	{ name: 'Laravel', color: '#ff2d20', svg: null },
-	{ name: 'Shopify', color: '#95bf47', svg: null },
-	{ name: 'WordPress', color: '#21759b', svg: wordpressIcon },
-	{ name: 'Statamic', color: '#ff269e', svg: null },
+	{ name: 'Tailwind CSS', color: '#06B6D4', svg: tailwindcss },
+	{ name: 'Vue.js', color: '#4FC08D', svg: vuedotjs },
+	{ name: 'Nuxt.js', color: '#00DC82', svg: nuxt },
+	{ name: 'Alpine.js', color: '#8BC0D0', svg: alpinedotjs },
+	{ name: 'React', color: '#61DAFB', svg: react },
+	{ name: 'Laravel', color: '#FF2D20', svg: laravel },
+	{ name: 'Shopify', color: '#7AB55C', svg: shopify },
+	{ name: 'WordPress', color: '#21759B', svg: wordpress },
+	{ name: 'Statamic', color: '#FF269E', svg: statamic },
 ];
 ---
 
@@ -27,20 +31,12 @@ const stack = [
 			{
 				stack.map((tech) => (
 					<li class='inline-flex items-center gap-2.5 border border-hairline bg-white px-4 py-2.5 text-sm font-semibold text-ink-soft'>
-						{tech.svg ? (
-							<span
-								aria-hidden='true'
-								class='inline-flex h-[18px] w-[18px] [&>svg]:h-full [&>svg]:w-full'
-								style={`color:${tech.color}`}
-								set:html={tech.svg}
-							/>
-						) : (
-							<span
-								aria-hidden='true'
-								class='inline-block h-[14px] w-[14px]'
-								style={`background:${tech.color}`}
-							/>
-						)}
+						<span
+							aria-hidden='true'
+							class='inline-flex h-[18px] w-[18px] [&>svg]:h-full [&>svg]:w-full'
+							style={`fill:${tech.color}`}
+							set:html={tech.svg}
+						/>
 						{tech.name}
 					</li>
 				))
