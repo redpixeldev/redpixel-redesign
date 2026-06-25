@@ -29,7 +29,12 @@ const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=$
 			{
 				products.map((product) => (
 					<li class='border-b border-r border-hairline'>
-						<div class='relative flex h-full flex-col p-6'>
+						<a
+							href={`https://${product.domain}`}
+							target='_blank'
+							rel='noopener noreferrer'
+							class='group relative flex h-full cursor-pointer flex-col p-6'
+						>
 							<span
 								aria-hidden='true'
 								class='display absolute right-5 top-4 text-3xl text-[#e6e6e6]'
@@ -46,15 +51,24 @@ const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=$
 							/>
 							<h3 class='display mt-4 text-xl text-ink'>{product.name}</h3>
 							<p class='mt-2 flex-1 text-sm leading-relaxed text-ink-soft'>{product.desc}</p>
-							<a
-								href={`https://${product.domain}`}
-								target='_blank'
-								rel='noopener noreferrer'
-								class='mt-4 font-mono text-xs font-bold uppercase tracking-[0.1em] text-brand'
-							>
-								Visit ↗
-							</a>
-						</div>
+							<span class='mt-4 inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.1em] text-brand'>
+								Visit
+								<span class='relative inline-block h-3 w-4 overflow-hidden'>
+									<span
+										aria-hidden='true'
+										class='absolute inset-0 transition-transform duration-300 ease-out group-hover:translate-x-4 group-hover:-translate-y-4'
+									>
+										↗
+									</span>
+									<span
+										aria-hidden='true'
+										class='absolute inset-0 -translate-x-4 translate-y-4 transition-transform duration-300 ease-out group-hover:translate-x-0 group-hover:translate-y-0'
+									>
+										↗
+									</span>
+								</span>
+							</span>
+						</a>
 					</li>
 				))
 			}
