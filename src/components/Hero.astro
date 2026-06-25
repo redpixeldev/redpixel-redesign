@@ -4,25 +4,39 @@ const email = 'vivian@redpixel.io';
 
 <section
 	id='top'
-	class='relative overflow-hidden bg-paper pt-32 pb-20 lg:pt-40 lg:pb-28'
+	class='relative flex items-center overflow-hidden bg-paper pt-32 pb-20 lg:min-h-[82vh] lg:pt-36 lg:pb-24'
+	style='background-image:linear-gradient(#ececec 1px,transparent 1px),linear-gradient(90deg,#ececec 1px,transparent 1px);background-size:34px 34px;background-position:center'
 >
-	<!-- faint pixel-grid texture -->
+	<!-- pixel-particle field -->
+	<canvas
+		id='hero-particles'
+		aria-hidden='true'
+		class='pointer-events-none absolute inset-0 z-0 h-full w-full'
+	>
+	</canvas>
+	<!-- radial fade so particles dissolve into the page behind the text -->
 	<div
 		aria-hidden='true'
-		class='pointer-events-none absolute inset-0 opacity-[0.4]'
-		style='background-image:linear-gradient(#0000000a 1px,transparent 1px),linear-gradient(90deg,#0000000a 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse at top right,#000,transparent 70%)'
+		class='pointer-events-none absolute inset-0 z-[1]'
+		style='background:radial-gradient(60% 60% at 50% 35%, rgba(247,247,247,0) 0%, #F7F7F7 100%)'
 	>
 	</div>
 
-	<div class='container relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]'>
+	<div class='container relative z-[2] grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]'>
 		<div class='min-w-0'>
 			<p class='eyebrow mb-5'>
-				<span class='inline-block h-2 w-2 bg-brand'></span>
+				<span class='rp-blink-dot inline-block h-2 w-2 bg-brand'></span>
 				Two sisters · 10+ years
 			</p>
 
 			<h1 class='display text-5xl text-ink sm:text-6xl lg:text-7xl'>
-				We solve <span class='text-brand'>business problems</span> with tech solutions
+				We solve <span class='text-brand'>business problems</span> with
+				<span class='relative whitespace-nowrap'>
+					tech solutions
+					<span
+						aria-hidden='true'
+						class='absolute inset-x-0 bottom-1.5 -z-10 h-2.5 bg-orange/35'></span>
+				</span>
 			</h1>
 
 			<p class='mt-6 max-w-xl text-lg leading-relaxed text-ink-soft'>
@@ -47,8 +61,8 @@ const email = 'vivian@redpixel.io';
 			</div>
 		</div>
 
-		<!-- Code editor window mockup -->
-		<div class='relative min-w-0'>
+		<!-- Code editor window mockup — gently floats -->
+		<div class='rp-float relative min-w-0'>
 			<div
 				aria-hidden='true'
 				class='absolute -right-3 -top-3 grid grid-cols-3 gap-1'
@@ -61,23 +75,74 @@ const email = 'vivian@redpixel.io';
 				<span class='h-2.5 w-2.5 bg-brand/20'></span>
 			</div>
 
-			<div class='overflow-hidden rounded-xl border border-hairline bg-white shadow-xl shadow-ink/5'>
+			<div class='overflow-hidden rounded-xl border border-hairline bg-white shadow-xl shadow-ink/10'>
 				<div class='flex items-center gap-2 border-b border-hairline bg-paper px-4 py-3'>
 					<span class='h-3 w-3 rounded-full bg-brand'></span>
 					<span class='h-3 w-3 rounded-full bg-orange'></span>
 					<span class='h-3 w-3 rounded-full bg-gray-light'></span>
-					<span class='ml-3 font-mono text-xs text-gray'>redpixel — studio.js</span>
+					<span class='ml-3 font-mono text-xs text-gray'>redpixel.io — ship.js</span>
 				</div>
-				<pre class='overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-ink-soft'><code><span class='text-brand'>const</span> studio = {'{'}
-  lead: <span class='text-orange'>'Vivian + Daniela'</span>,
-  pairs: <span class='text-brand'>10</span>,
-  stack: [<span class='text-orange'>'Vue'</span>, <span class='text-orange'>'Laravel'</span>, <span class='text-orange'>'Tailwind'</span>],
-  reliable: <span class='text-brand'>true</span>,
-{'}'}
-
-<span class='text-gray'>// ship to your timeline</span>
-ship(studio).<span class='text-brand'>often</span>()</code></pre>
+				<pre class='overflow-x-auto p-5 font-mono text-[13px] leading-[1.9] text-ink-soft'><code><span class='select-none text-gray-light'>01</span>  <span class='text-brand'>const</span> studio = <span class='text-orange'>{'{'}</span>
+<span class='select-none text-gray-light'>02</span>    team: <span class='text-[#1a8a4a]'>'Vivian + Daniela'</span>,
+<span class='select-none text-gray-light'>03</span>    years: <span class='text-brand'>10</span>,
+<span class='select-none text-gray-light'>04</span>    stack: [<span class='text-[#1a8a4a]'>'Vue'</span>, <span class='text-[#1a8a4a]'>'Laravel'</span>, <span class='text-[#1a8a4a]'>'Tailwind'</span>],
+<span class='select-none text-gray-light'>05</span>    reliable: <span class='text-brand'>true</span>,
+<span class='select-none text-gray-light'>06</span>  <span class='text-orange'>{'}'}</span>;
+<span class='select-none text-gray-light'>07</span>  <span class='text-brand'>ship</span>(studio).<span class='text-orange'>onTime</span>();<span class='rp-caret ml-0.5 inline-block h-4 w-2 translate-y-[3px] bg-ink'></span></code></pre>
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	// Hero pixel-particle field — ported from the reference's startParticles().
+	const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const canvas = document.getElementById('hero-particles') as HTMLCanvasElement | null;
+
+	if (canvas && !reduce) {
+		const ctx = canvas.getContext('2d')!;
+		const colors = ['#EF4123', '#F7941E', '#EE1B23', '#f7b072'];
+		const dpr = Math.min(window.devicePixelRatio || 1, 2);
+		let parts: { x: number; y: number; s: number; vy: number; vx: number; a: number; c: string }[] = [];
+
+		const resize = () => {
+			const r = canvas.getBoundingClientRect();
+			canvas.width = r.width * dpr;
+			canvas.height = r.height * dpr;
+			const count = Math.round(Math.min(70, r.width / 16));
+			parts = Array.from({ length: count }, () => ({
+				x: Math.random() * r.width,
+				y: Math.random() * r.height,
+				s: 3 + Math.random() * 6,
+				vy: 0.15 + Math.random() * 0.5,
+				vx: (Math.random() - 0.5) * 0.3,
+				a: 0.15 + Math.random() * 0.5,
+				c: colors[(Math.random() * colors.length) | 0],
+			}));
+		};
+		resize();
+		window.addEventListener('resize', resize);
+
+		const tick = () => {
+			const r = canvas.getBoundingClientRect();
+			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+			ctx.clearRect(0, 0, r.width, r.height);
+			for (const p of parts) {
+				p.y -= p.vy;
+				p.x += p.vx;
+				if (p.y < -10) {
+					p.y = r.height + 10;
+					p.x = Math.random() * r.width;
+				}
+				if (p.x < -10) p.x = r.width + 10;
+				if (p.x > r.width + 10) p.x = -10;
+				ctx.globalAlpha = p.a;
+				ctx.fillStyle = p.c;
+				ctx.fillRect(p.x, p.y, p.s, p.s);
+			}
+			ctx.globalAlpha = 1;
+			requestAnimationFrame(tick);
+		};
+		tick();
+	}
+</script>

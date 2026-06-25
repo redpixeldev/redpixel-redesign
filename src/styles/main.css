@@ -74,3 +74,49 @@
 		@apply outline-2 outline-offset-2 outline-brand;
 	}
 }
+
+/* ---------------------------------------------------------------------------
+   Hero motion (ported from the "Vibrant Pixel A" reference): the code window
+   gently floats, the eyebrow dot pulses, and a caret blinks. The pixel-particle
+   field is drawn on a <canvas> by the script in Hero.astro. All motion is
+   disabled under prefers-reduced-motion (WCAG 2.2 — 2.3.3).
+--------------------------------------------------------------------------- */
+@keyframes rp-float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-8px);
+	}
+}
+
+@keyframes rp-blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.25;
+	}
+}
+
+.rp-float {
+	animation: rp-float 6s ease-in-out infinite;
+}
+
+.rp-blink-dot {
+	animation: rp-blink 1.4s infinite;
+}
+
+.rp-caret {
+	animation: rp-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rp-float,
+	.rp-blink-dot,
+	.rp-caret {
+		animation: none !important;
+	}
+}
