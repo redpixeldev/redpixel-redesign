@@ -9,22 +9,23 @@ const email = 'vivian@redpixel.io';
 	<div class='container'>
 		<div class='relative overflow-hidden bg-brand px-6 py-16 text-center sm:px-12 lg:py-24'>
 			<img
-				src='/img/cube-bg.png'
+				src='/img/cta-bg.png'
 				alt=''
 				aria-hidden='true'
-				class='absolute inset-0 h-full w-full object-cover opacity-60 mix-blend-multiply'
+				class='absolute inset-0 h-full w-full object-cover'
 			/>
+			<!-- subtle scrim so white text keeps WCAG-safe contrast over the image -->
 			<div
 				aria-hidden='true'
-				class='absolute inset-0 bg-brand/30'
+				class='absolute inset-0 bg-black/20'
 			>
 			</div>
 
-			<div class='relative mx-auto max-w-2xl'>
+			<div class='relative mx-auto max-w-2xl [text-shadow:0_2px_12px_rgba(0,0,0,0.35)]'>
 				<h2 class='display text-5xl text-white sm:text-6xl lg:text-7xl'>
 					Have a project?<br />Let's build it.
 				</h2>
-				<p class='mx-auto mt-5 max-w-md text-lg text-white/90'>
+				<p class='mx-auto mt-5 max-w-md text-lg text-white/95'>
 					Tell us what you're working on. We'll reply fast with a clear, honest plan to ship it.
 				</p>
 				<a
