@@ -1,53 +1,19 @@
 ---
-// Live site screenshots render via image.thum.io so cards are never empty.
+// Set `image` to a file in /public to use your own screenshot (e.g. '/sponsonizer.png').
+// Leave it off and the card falls back to a live screenshot via image.thum.io.
 const defaultProjects = [
-	{
-		name: 'Sponsonizer',
-		domain: 'sponsonizer.com',
-		desc: 'Sponsorship matchmaking that pairs creators with the right brands.',
-		sub: 'Sponsorship matchmaking',
-		tags: ['Web App', 'React', 'Laravel', 'Inertia'],
-	},
-	{
-		name: 'Calculator Friend',
-		domain: 'calculatorfriend.com',
-		desc: 'A friendly library of smart calculators for everyday math.',
-		sub: 'Everyday calculators',
-		tags: ['Statamic'],
-	},
-	{
-		name: 'Windybase',
-		domain: 'windybase.com',
-		desc: 'No-code databases that small teams actually enjoy using.',
-		sub: 'No-code databases',
-		tags: ['Statamic', 'Vue'],
-	},
-	{
-		name: 'Design2Tailwind',
-		domain: 'design2tailwind.com',
-		desc: 'Turn any design into clean, production-ready Tailwind.',
-		sub: 'Design-to-code tool',
-		tags: ['Astro', 'Alpine.js'],
-	},
-	{
-		name: 'Red Pixel Themes',
-		domain: 'redpixelthemes.com',
-		desc: 'Premium Tailwind UI themes and components for builders.',
-		sub: 'Premium web themes',
-		tags: ['Statamic'],
-	},
-	{
-		name: 'Red Pixel',
-		domain: 'redpixel.io',
-		desc: 'Our studio home — where every project starts.',
-		sub: 'Web design studio',
-		tags: ['Studio'],
-	},
+	{ name: 'Sponsonizer', domain: 'sponsonizer.com', image: '/sponsonizer.png', desc: 'Sponsorship matchmaking that pairs creators with the right brands.', sub: 'Sponsorship matchmaking', tags: ['Web App', 'Vue'] },
+	{ name: 'Calculator Friend', domain: 'calculatorfriend.com', image: '/sponsonizer.png', desc: 'A friendly library of smart calculators for everyday math.', sub: 'Everyday calculators', tags: ['Tool', 'SEO'] },
+	{ name: 'Windybase', domain: 'windybase.com', image: '/sponsonizer.png', desc: 'No-code databases that small teams actually enjoy using.', sub: 'No-code databases', tags: ['SaaS', 'Laravel'] },
+	{ name: 'Design2Tailwind', domain: 'design2tailwind.com', image: '/sponsonizer.png', desc: 'Turn any design into clean, production-ready Tailwind.', sub: 'Design-to-code tool', tags: ['Dev Tool'] },
+	{ name: 'Red Pixel Themes', domain: 'redpixelthemes.com', image: '/sponsonizer.png', desc: 'Premium Tailwind UI themes and components for builders.', sub: 'Premium web themes', tags: ['Themes', 'Shop'] },
+	{ name: 'Red Pixel', domain: 'redpixel.io', image: '/sponsonizer.png', desc: 'Our studio home — where every project starts.', sub: 'Web design studio', tags: ['Studio'] },
 ];
 
 interface Project {
 	name: string;
 	domain: string;
+	image?: string;
 	desc?: string;
 	sub?: string;
 	tags?: string[];
@@ -98,14 +64,11 @@ const gridCols = columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
 							href={`https://${project.domain}`}
 							target='_blank'
 							rel='noopener noreferrer'
-							class='group border-hairline shadow-ink/15 hover:shadow-brand/40 relative flex h-full flex-col border bg-white shadow-md transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg'>
-							<span
-								aria-hidden='true'
-								class='bg-brand absolute top-3 left-3 z-10 h-2.5 w-2.5'
-							/>
-							<div class='border-hairline bg-paper aspect-4/3 overflow-hidden border-b'>
+							class='group relative flex h-full flex-col border border-hairline bg-white shadow-md shadow-ink/15 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg hover:shadow-brand/40'
+						>
+							<div class='aspect-[4/3] overflow-hidden border-b border-hairline bg-paper'>
 								<img
-									src={shot(project.domain)}
+									src={project.image ?? shot(project.domain)}
 									alt={`Screenshot of the ${project.name} website`}
 									width='900'
 									height='675'
