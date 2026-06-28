@@ -223,3 +223,183 @@ Grilling + stop-slop pass on `src/components/ReadyCTA.astro` (closing contact/CT
 ## Plans page — completed passes
 
 PlansHero, MonthlyBill, Included, Process (+ planSteps), FAQ, ReadyCTA — all done. Plans page copy pass complete.
+
+---
+
+# HOMEPAGE PASS
+
+The homepage sells to a different buyer than the plans page: **agencies, startups, and technical founders** evaluating whether Red Pixel is *competent and reliable*, not whether websites are scary. Voice stays warm first-person "we," but the proof points get sharper and more technical. Slop dies faster here because the audience can smell it.
+
+## Hero copy rewrite — decisions & rationale
+
+Grilling + stop-slop pass on `src/components/Hero.astro` (homepage opener: two-sister senior dev studio on retainer).
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| H1 angle | **Lead with the retainer relationship** | "We solve business problems with tech solutions" was abstract-on-abstract; says nothing a competitor couldn't. The retainer relationship is what they actually buy. |
+| Subhead | **Rewrite to add new info** | New H1 owns "reliable/retainer"; subhead must not echo. Use the space for names + senior/no-juniors proof instead. Also avoids echoing the eyebrow's "12+ years". |
+| Primary CTA | **"Book a call"** | Lower commitment than "Start a project" — suits a buyer still evaluating fit. Kept the mailto (subject → "Book a call") until a real scheduling link exists. |
+| Mockup year | **10 → 12** | Eyebrow says "12+ years"; mockup hardcoded `years: 10` two inches away. Technical buyers read mockup values. |
+
+### Before → After
+
+**H1:** `We solve business problems with tech solutions`
+→ `The reliable dev team your team keeps on retainer.` (`reliable` in brand color, `on retainer` keeps the orange underline)
+
+**Subhead:** `A two-person studio run by sisters Vivian & Daniela Guillen. We plug into your team, ship to your timeline, and become the reliable dev partner startups and agencies keep on retainer.`
+→ `Run by sisters Vivian & Daniela Guillen. Two senior devs who plug into your roadmap, ship on your timeline, and don't need hand-holding.`
+
+**Primary CTA:** `Start a project` → `Book a call` (href subject updated to match)
+
+**Mockup:** `years: 10` → `years: 12`
+
+### Stop-slop notes
+
+- Killed the abstract "business problems / tech solutions" placeholder H1.
+- De-duped: "reliable/retainer" now fire once (H1), not twice (was H1 idea + subhead tail).
+- Cut "two-person studio" from subhead (eyebrow + mockup already establish team size).
+- Removed the only em dash; ended subhead on the differentiator "don't need hand-holding."
+- New cohesion: H1 says `reliable` → mockup renders `reliable: true` + `ship(studio).onTime()` → subhead says `ship on your timeline`. The decorative code block became a third proof point.
+- **43/50** scorecard.
+
+### Known follow-up
+
+- "Book a call" CTA opens an email, not a scheduler. Swap the `href` to a Calendly/Cal.com link when available — the label is already right.
+
+## About copy rewrite — decisions & rationale
+
+Grilling + stop-slop pass on `src/components/About.astro` (homepage section 2: the two-sister story + stat cards).
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Para 1 closer ('communicate like our lives depend on it. Because reliable beats flashy every single time.') | **Replace with concrete proof** | Slogan-shaped pull-quote + lazy extreme ('every single time') + claims reliability instead of showing it. This audience distrusts slogans most. |
+| Stat-card vs prose overlap (12+ years, no handoffs) | **De-dupe: cards own the numbers** | Repeating a stat card's fact in prose two inches away wastes the prose. Cards carry 12+/90+/2; prose adds how you work + what it feels like. |
+
+### Before → After
+
+**Para 1:** `Two sisters, both professional full-stack developers with a dozen-plus years of full-time freelance work behind us. We understand your needs, define a clear scope, deliver to your timeline, and communicate like our lives depend on it. Because reliable beats flashy every single time.`
+→ `Two sisters, both full-stack developers. We learn how your business works, agree on the scope up front, and ship to your timeline. You hear from us before you have to ask, and the work lands when we said it would.`
+
+**Para 2:** `…we move fast without losing focus. You get a senior pair, not a handoff chain.`
+→ `…we move fast and stay focused. One senior pair, start to finish.`
+
+### Stop-slop notes
+
+- Cut the 'reliable beats flashy every single time' slogan and the 'communicate like our lives depend on it' hyperbole — replaced with a checkable behavior (proactive comms + on-time delivery).
+- Cut 'professional' (empty filler) and the 'dozen-plus years' echo of the stat card.
+- Killed a 'not X' contrast ('a senior pair, not a handoff chain') AND its same-screen echo of the 'no handoffs' stat → positive 'One senior pair, start to finish.'
+- Removed the adverb 'clearly' (→ 'agree on the scope up front').
+- Reinforces (not repeats) the Hero: both now say 'on retainer.'
+- **45/50** scorecard.
+
+## Services copy rewrite — decisions & rationale
+
+Grilling + stop-slop pass on `src/components/Services.astro` (homepage section: 4 service rows + intro). Already strong; surgical pass.
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Intro 'Four ways we can help…' | **Sharpen to the range** | 'ways we can help' is generic; lead with the span (Shopify storefront → Laravel app), which is the real sell to an agency sizing capability. Previews the list in the buyer's stack vocabulary. |
+| 'Robust' (Service 02) | **Cut (banned word)** | On the global banned list — everyone claims it, no one can verify it. → 'Maintainable, well-tested' (checkable). |
+| 'pixel-perfect' (Service 03) | **Keep (brand pun)** | Deliberate wink for a company named Red Pixel, not lazy filler. |
+| Service 04 tail 'showing real, measurable performance' | **Cut filler, fix grammar** | 'Core Web Vitals tuned to green' is the concrete proof; the tail was filler with limping grammar. |
+
+### Before → After
+
+**Intro:** `Four ways we can help, from storefront to full app, plus the speed to back it up.`
+→ `From a Shopify storefront to a full Laravel app, with the speed to back it up.`
+
+**02:** `Robust, maintainable apps built with Vue/React, Inertia, and Laravel.`
+→ `Maintainable, well-tested apps built with Vue/React, Inertia, and Laravel.`
+
+**04:** `Core Web Vitals tuned to green showing real, measurable performance.`
+→ `Core Web Vitals tuned to green, with the numbers to prove it.`
+
+### Stop-slop notes
+
+- Removed banned word 'Robust', filler tail 'real, measurable performance', generic 'ways we can help'.
+- Kept the technical register (real stack names) — correct for this buyer.
+- Kept 'pixel-perfect' as intentional brand voice.
+- **44/50** scorecard.
+
+## TechStack — reviewed, no change (intentional)
+
+`src/components/TechStack.astro` is a logo strip; the only prose is the label 'Our stack'. Decided to **leave it bare** — a clean logo wall is the strongest format for a technical buyer scanning for their stack. Adding a framing sentence would introduce slop into a section that currently has none. The logos are the message.
+
+## Process homepage steps — decisions & rationale
+
+Grilling + stop-slop pass on `defaultSteps` in `src/components/Process.astro` (the homepage step descriptions). Shared header (eyebrow/H2/intro) was already rewritten in the plans pass. The plans page injects its own `planSteps`, so this change is homepage-only.
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Step 01 'Define' | **Tighten, keep substance** | Wordiest, most corporate of the four (3 stacked clauses + 'what success looks like' biz-speak). |
+| Steps 02–04 incl. 'Two senior devs heads-down' | **Keep the dev-voice** | Right for agencies/founders. The line was only wrong on the *plans* page (non-technical owners); here it's an asset that differentiates from junior-staffed shops. |
+
+### Before → After (homepage Define only)
+
+`We sit down with you to understand the problem, define the scope, and agree on what success looks like.`
+→ `We dig into the problem with you and agree on what a win looks like before we scope it.`
+
+### Stop-slop notes
+
+- Cut the three-clause stack; 'a win' > 'what success looks like' (the word the buyer uses in standups, not the word a proposal template uses).
+- Steps 02 (Design), 03 (Build), 04 (Ship) untouched — already concrete and audience-right.
+- Same shared component, two audience-tuned copies: this edit doesn't touch the plans page's owner-voice Define.
+- **44/50** scorecard.
+
+## Products copy rewrite — decisions & rationale
+
+Grilling + stop-slop pass on `src/components/Products.astro` (homepage section: 5 self-built product cards + 'More in the works' tile).
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Intro 'We don't just build for clients — we ship our own ideas, too.' | **State it positively** | Trips TWO hard rules: the banned 'not just X' construction + an em dash. The 5 product cards below already prove the point, so the line should label evidence, not argue. |
+| Product descriptions | **Keep** | Concrete and clean already ('Calendly for newsletter sponsorships' is an excellent X-for-Y analogy). |
+
+### Before → After
+
+`We don't just build for clients — we ship our own ideas, too.`
+→ `Between client work, we build and ship our own products.`
+
+### Stop-slop notes
+
+- Killed the banned 'not just X' pattern and an em dash in one line.
+- 'Between client work' signals these shipped around a full client load = capacity/energy to a buyer.
+- Product cards + 'More in the works' tile untouched.
+- **45/50** scorecard.
+
+## CTA copy rewrite — decisions & rationale
+
+Grilling + stop-slop pass on `src/components/CTA.astro` (homepage closing call-to-action; separate from the plans page's ReadyCTA).
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Subhead 'a clear, honest plan' + 'reply fast' | **Show honesty via specifics** | 'honest' is the site-wide self-praise tic (4th appearance). Replace with the concrete thing it means: real numbers on cost + timeline. Kills vague 'fast' too. |
+| Email button vs Hero's 'Book a call' | **Keep distinct** | Funnel design: low-commitment call at top while evaluating; real email at the bottom once ready to reach out. |
+| H2 'Have a project? Let's build it.' | **Keep** | Strong, punchy closer. |
+
+### Before → After
+
+`Tell us what you're working on. We'll reply fast with a clear, honest plan to ship it.`
+→ `Tell us what you're working on. You'll get a clear plan with real numbers on cost and timeline.`
+
+### Stop-slop notes
+
+- Killed 'honest' (4th sitewide instance of the self-praise tic) and the vague 'reply fast'.
+- 'Real numbers on cost and timeline' pre-sets what the reply email contains = a soft lead qualifier.
+- **45/50** scorecard.
+
+## Homepage — remaining sections
+
+Work, Testimonials.
