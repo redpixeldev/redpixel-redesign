@@ -400,6 +400,64 @@ Grilling + stop-slop pass on `src/components/CTA.astro` (homepage closing call-t
 - 'Real numbers on cost and timeline' pre-sets what the reply email contains = a soft lead qualifier.
 - **45/50** scorecard.
 
-## Homepage — remaining sections
+## Work copy rewrite — decisions & rationale
 
-Work, Testimonials.
+Grilling + stop-slop pass on `src/components/Work.astro` (homepage project showcase). Default header props show on homepage; plans page overrides title + passes `intro=''`, so default-prop edits are homepage-only.
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Intro 'Real projects with real results.' | **Name the work, drop the claim** | Empty alliterative filler; 'results' is unsubstantiated (cards show sites, not metrics). Name the verbs instead. |
+| Nine client descriptions | **Em dashes + Boostrap fix only** | Safe pass: 4 dashes → colons, stop Boostrap restating its own name. No meaning changes to factual client blurbs (kept 'delicious'/'proudly' as brand flavor). |
+
+### Before → After
+
+**Intro:** `Real projects with real results. Visit any project to see it in action.`
+→ `Sites we built and shipped for clients. Click any one to see it live.`
+
+> Accuracy note: an earlier draft said 'designed, built, and shipped' but **not all nine were designed by Red Pixel**, so 'designed' was pulled from the blanket claim. 'Built and shipped' is true for every card. If a subset was fully designed in-house, flag it per-card via the `tags` array, not in the header.
+
+**Descriptions:** em dash → colon on Cornelia, Source, Fairplay, Accessability Officer. Boostrap: `Boostrap Logos is a curated gallery…` → `A curated gallery…`
+
+### Stop-slop notes
+
+- Killed the filler intro, 4 em dashes, and a self-referential name repeat.
+- Left client blurbs factually intact to avoid misrepresenting clients.
+- Default `intro` change is homepage-only (plans passes `intro=''`).
+- **44/50** scorecard.
+
+## Testimonials — integrity pass (not stop-slop)
+
+Pass on `src/components/Testimonials.astro`. Key principle: **real quotes from named people are off-limits.** Editing a quote attributed to someone = fabrication, not copy polish. Only keep/remove/replace-with-real are allowed.
+
+### Decisions locked
+
+| Decision | Choice | Why |
+|---|---|---|
+| Two live quotes (Nick Sergeant, Dries) | **Untouched, verbatim** | Real people's words. Stop-slop never applies to attributed quotes. |
+| Commented-out testimonials (Priya Raman, Marco Bianchi) | **Deleted from source** | Fabricated (invented names + randomuser.me stock avatars). Disabled code gets re-enabled; fake social proof is a trust-killer for technical buyers. |
+| Header 'What clients say' | **Keep** | Honest, clear, unpretentious. The quotes are the point. |
+
+### Leftover (flagged, not changed)
+
+- Both real testimonials still carry `randomuser.me` avatar URLs (Nick's is `women/44.jpg`). Harmless now — the `<img>` is commented out in both grid + carousel, so nothing renders. Clean up the dead data when real headshots exist or going avatar-free.
+
+---
+
+## HOMEPAGE PASS — COMPLETE
+
+All sections reviewed: Hero, About, Services, TechStack (no-change), Process (homepage steps), Products, CTA, Work, Testimonials.
+
+Cross-site patterns fixed on the homepage:
+- Killed the abstract placeholder H1 ('business problems / tech solutions') → retainer-relationship lead.
+- Self-praise tic 'honest' removed again in CTA (4th sitewide instance).
+- Banned words/constructions: 'Robust' (Services), 'not just X' (Products).
+- Em dashes removed: Work descriptions (4) + scattered others.
+- Audience kept technical where it belongs (Process 'two senior devs', Services stack names) — the opposite of the plans-page fix.
+- Integrity: fabricated testimonials deleted; Work intro corrected from over-claiming 'designed' (not all 9 were designed in-house) to 'built and shipped'.
+
+### Parked / open
+- 'Book a call' Hero CTA opens a mailto, not a scheduler — swap href when a Calendly/Cal.com link exists.
+- Testimonials avatars: dead randomuser.me URLs to clean up.
+- Optional: preview the homepage in a browser to sanity-check the Hero headline wrap (forced `<br />` was stripped by the formatter).
