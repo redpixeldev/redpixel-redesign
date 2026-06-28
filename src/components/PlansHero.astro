@@ -4,56 +4,49 @@ const email = 'vivian@redpixel.io';
 
 <section
 	id='top'
-	class='relative overflow-hidden bg-paper pt-32 pb-20 lg:pt-44 lg:pb-24'
->
+	class='bg-paper relative overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-24'>
 	<!-- pixel-particle field -->
 	<canvas
 		id='plans-particles'
 		aria-hidden='true'
-		class='pointer-events-none absolute inset-0 z-0 h-full w-full'
-	>
+		class='pointer-events-none absolute inset-0 z-0 h-full w-full'>
 	</canvas>
 	<!-- warm orange glow, top-right -->
 	<div
 		aria-hidden='true'
-		class='pointer-events-none absolute -right-32 -top-32 h-[460px] w-[460px] rounded-full'
-		style='background:radial-gradient(circle, rgba(247,148,30,0.16), transparent 70%)'
-	>
+		class='pointer-events-none absolute -top-32 -right-32 h-[460px] w-[460px] rounded-full'
+		style='background:radial-gradient(circle, rgba(247,148,30,0.16), transparent 70%)'>
 	</div>
 
-	<div class='container relative z-[1] mx-auto max-w-5xl text-center'>
+	<div class='relative z-[1] container mx-auto max-w-5xl text-center'>
 		<p
-			class='mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand/20 bg-white px-3.5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-brand shadow-sm shadow-ink/5'
-		>
-			<span class='rp-blink-dot inline-block h-1.5 w-1.5 bg-brand'></span>
-			Fully-managed websites
+			class='border-brand/20 text-brand shadow-ink/5 mb-6 inline-flex items-center gap-2.5 rounded-full border bg-white px-3.5 py-2 font-mono text-xs font-bold tracking-[0.16em] uppercase shadow-sm'>
+			<span class='rp-blink-dot bg-brand inline-block h-1.5 w-1.5'></span>
+			Websites, done for you
 		</p>
 
-		<h1 class='display text-5xl text-ink sm:text-6xl lg:text-7xl'>
-			A professional website<br />
-			for your business —<br />
-			<span class='bg-gradient-to-r from-brand-bright to-orange bg-clip-text text-transparent'>
-				without the headache.
+		<h1 class='display text-ink text-5xl sm:text-6xl lg:text-7xl'>
+			You run your business.<br />
+			<span class='from-brand-bright to-orange bg-gradient-to-r bg-clip-text text-transparent'>
+				We run your website.
 			</span>
 		</h1>
 
-		<p class='mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft'>
-			You don't need to know a thing about websites, hosting, or domains. Red Pixel designs, builds, hosts, and
-			manages everything — for one simple monthly price.
+		<p class='text-ink-soft mx-auto mt-6 max-w-xl text-lg leading-relaxed'>
+			No hosting to set up, no domains to renew, no plugins to update. We design, build, and run the whole website for
+			you, from $99 a month. No setup fee, cancel anytime.
 		</p>
 
 		<div class='mt-8 flex flex-wrap items-center justify-center gap-4'>
 			<a
 				href={`mailto:${email}?subject=Project%20inquiry`}
-				class='btn-primary'
-			>
-				Get started
+				class='btn-primary'>
+				Get my website
 				<span aria-hidden='true'>→</span>
 			</a>
 			<a
 				href='#pricing'
-				class='btn-outline'
-			>
+				class='btn-outline'>
 				See pricing
 			</a>
 		</div>
