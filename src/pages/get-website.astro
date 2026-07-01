@@ -31,6 +31,43 @@ const planSteps = [
 		desc: 'Once you’re live, we keep it running with updates, fixes, and changes whenever you need them.',
 	},
 ];
+
+// Websites shown on this page's "Our work" section — replace with real managed sites.
+// Add an `image: '/name.png'` (file in /public) to use your own screenshot; otherwise a live screenshot is used.
+const managedProjects = [
+	{
+		name: 'Castalia',
+		domain: 'castalia.com',
+		image: '/aguacastalia.png',
+		desc: 'Leadership coaching and consulting that helps executives and teams grow through creative risk-taking.',
+		sub: 'Leadership coaching & consulting',
+		tags: ['Consulting', 'Coaching'],
+	},
+	{
+		name: 'Farmacia VDG',
+		domain: 'farmaciavdg.com',
+		image: '/farmaciavdg.png',
+		desc: 'Neighborhood pharmacy serving its community with medicines, health products, and friendly local service.',
+		sub: 'Neighborhood pharmacy',
+		tags: ['Pharmacy', 'Local'],
+	},
+	{
+		name: 'Antojitos',
+		domain: 'antojitosscg.com',
+		image: '/antojitos.png',
+		desc: 'Authentic Mexican eatery serving traditional antojitos and homestyle favorites made fresh daily.',
+		sub: 'Authentic Mexican food',
+		tags: ['Restaurant', 'Food'],
+	},
+	{
+		name: 'Madrigal',
+		domain: 'madrigal.com',
+		image: '/madrigal.png',
+		desc: 'Real estate company helping clients find, buy, and sell properties with confidence.',
+		sub: 'Short tagline goes here',
+		tags: ['Real Estate'],
+	},
+];
 ---
 
 <Layout
@@ -54,6 +91,7 @@ const planSteps = [
 			intro=''
 			columns={3}
 			compact={true}
+			projects={managedProjects}
 		/>
 		<Testimonials />
 		<FAQ />
