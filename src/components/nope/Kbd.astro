@@ -1,0 +1,18 @@
+---
+interface Props {
+	keys?: string[];
+}
+
+const { keys = ['Alt', 'X'] } = Astro.props;
+---
+
+<span class='inline-flex items-center gap-1.5 rounded-lg bg-neutral-800 px-2.5 py-1.5 text-sm inset-ring inset-ring-white/10'>
+	{
+		keys.map((key, i) => (
+			<>
+				{i > 0 && <span class='text-neutral-500'>+</span>}
+				<kbd class='font-mono font-medium text-neutral-200'>{key}</kbd>
+			</>
+		))
+	}
+</span>

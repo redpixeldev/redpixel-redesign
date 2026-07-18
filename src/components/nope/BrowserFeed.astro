@@ -1,0 +1,138 @@
+---
+import Mark from '@components/nope/Mark.astro';
+
+interface Props {
+	mode?: 'dismiss' | 'suppress';
+	class?: string;
+}
+
+const { mode = 'dismiss', class: className = '' } = Astro.props;
+
+const cards = [
+	{
+		title: 'Trail run — the full route, no edits',
+		channel: 'Maker Lane',
+		duration: '18:24',
+		tint: 'from-slate-600/50',
+	},
+	{ title: 'Late-night synth session', channel: 'Studio North', duration: '1:02:11', tint: 'from-rose-800/40' },
+	{ title: 'Slow morning, one take', channel: 'Field Notes', duration: '9:47', tint: 'from-emerald-800/40' },
+	{ title: 'Workshop tour, finally tidy', channel: 'Off Cut', duration: '24:03', tint: 'from-amber-700/40' },
+];
+---
+
+<div class={`overflow-hidden rounded-2xl bg-neutral-900 inset-ring inset-ring-white/10 ${className}`}>
+	<!-- window chrome -->
+	<div class='flex items-center gap-4 border-b border-white/10 px-4 py-3'>
+		<div class='flex gap-1.5'>
+			<span class='size-3 rounded-full bg-neutral-700'></span>
+			<span class='size-3 rounded-full bg-neutral-700'></span>
+			<span class='size-3 rounded-full bg-neutral-700'></span>
+		</div>
+		<div class='flex flex-1 items-center gap-2 rounded-md bg-neutral-800 px-3 py-1.5 text-sm text-neutral-400'>
+			<svg
+				class='size-4 shrink-0 stroke-neutral-500'
+				viewBox='0 0 24 24'
+				fill='none'
+				stroke-width='1.5'
+				aria-hidden='true'>
+				<path
+					stroke-linecap='round'
+					stroke-linejoin='round'
+					d='M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z'
+				></path>
+			</svg>
+			youtube.com
+		</div>
+	</div>
+
+	<!-- feed grid -->
+	<div class='grid grid-cols-2 gap-x-5 gap-y-6 p-5'>
+		{
+			cards.map((card, i) => {
+				const removed = mode === 'dismiss' && i === 2;
+				const active = i === 0;
+				return (
+					<div class='relative'>
+						{removed ? (
+							<div class='flex aspect-video flex-col items-center justify-center gap-2.5 rounded-xl bg-neutral-950 inset-ring inset-ring-white/10'>
+								<svg
+									class='size-6 stroke-neutral-500'
+									viewBox='0 0 24 24'
+									fill='none'
+									stroke-width='1.5'
+									aria-hidden='true'>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										d='M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636'
+									/>
+								</svg>
+								<p class='text-sm font-medium text-white'>Video removed</p>
+								<span class='rounded-md px-3 py-1 text-sm font-medium text-sky-400 inset-ring inset-ring-sky-500/40'>
+									Undo
+								</span>
+							</div>
+						) : (
+							<div
+								class={`relative aspect-video overflow-hidden rounded-xl bg-linear-to-br ${card.tint} to-neutral-800`}>
+								{active && (
+									<div class='absolute top-2 left-2 flex flex-col gap-2'>
+										<span class='flex size-9 items-center justify-center rounded-full bg-neutral-950/90 shadow-lg ring-1 ring-white/15'>
+											<svg
+												class='size-4 stroke-white'
+												viewBox='0 0 24 24'
+												fill='none'
+												stroke-width='2'
+												aria-hidden='true'>
+												<path
+													stroke-linecap='round'
+													stroke-linejoin='round'
+													d='M6 18 18 6M6 6l12 12'
+												/>
+											</svg>
+										</span>
+										{mode === 'suppress' && (
+											<span class='flex size-9 items-center justify-center rounded-full bg-neutral-950/90 shadow-lg ring-1 ring-white/15'>
+												<svg
+													class='stroke-nope-bright size-4'
+													viewBox='0 0 24 24'
+													fill='none'
+													stroke-width='2'
+													aria-hidden='true'>
+													<path
+														stroke-linecap='round'
+														stroke-linejoin='round'
+														d='M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636'
+													/>
+												</svg>
+											</span>
+										)}
+									</div>
+								)}
+								<span class='absolute right-2 bottom-2 rounded bg-black/80 px-1.5 py-0.5 text-sm font-medium text-white tabular-nums'>
+									{card.duration}
+								</span>
+							</div>
+						)}
+						<div class='mt-3 flex gap-3'>
+							<span class='size-9 shrink-0 rounded-full bg-neutral-700' />
+							<div class='min-w-0'>
+								<p class='truncate text-sm font-medium text-white'>{card.title}</p>
+								<p class='truncate text-sm text-neutral-400'>{card.channel}</p>
+							</div>
+						</div>
+
+						{/* hover tooltip floating off the active card */}
+						{active && (
+							<div class='absolute -top-2 -left-3 flex -translate-x-full items-center gap-2 rounded-lg bg-neutral-950 px-3 py-2 text-sm font-medium whitespace-nowrap text-white shadow-xl ring-1 ring-white/10 max-lg:hidden'>
+								<Mark class='size-4' />
+								{mode === 'suppress' ? 'Suppress channel' : 'Not interested'}
+							</div>
+						)}
+					</div>
+				);
+			})
+		}
+	</div>
+</div>

@@ -21,8 +21,8 @@
 	--color-paper: #f7f7f7; /* off-white section bg */
 }
 
-@plugin "@tailwindcss/typography";
-@plugin "@tailwindcss/forms";
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
 
 @utility container {
 	margin-inline: auto;
@@ -35,16 +35,16 @@
 }
 
 @utility btn-primary {
-	@apply btn bg-brand text-white hover:bg-brand-bright;
+	@apply btn bg-brand hover:bg-brand-bright text-white;
 }
 
 @utility btn-outline {
-	@apply btn border border-hairline bg-white text-ink hover:border-ink;
+	@apply btn border-hairline text-ink hover:border-ink border bg-white;
 }
 
 /* Small mono eyebrow label used above each section heading (e.g. "// ABOUT US") */
 @utility eyebrow {
-	@apply inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.16em] text-brand uppercase;
+	@apply text-brand inline-flex items-center gap-2 font-mono text-xs font-bold tracking-[0.16em] uppercase;
 }
 
 /* Big condensed Oswald display headings */
@@ -58,7 +58,7 @@
 
 @layer base {
 	html {
-		@apply scroll-smooth font-body text-ink antialiased;
+		@apply font-body text-ink scroll-smooth antialiased;
 	}
 
 	body {
@@ -71,7 +71,7 @@
 
 	/* Visible focus ring for keyboard users (WCAG 2.2 — 2.4.7 / 2.4.11) */
 	:focus-visible {
-		@apply outline-2 outline-offset-2 outline-brand;
+		@apply outline-brand outline-2 outline-offset-2;
 	}
 }
 
